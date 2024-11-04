@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1 {
+            width: 300px;
+            height: 100px;
+            background-color: lightpink;
+        }
+
+        .div2 {
+            width: 300px;
+            height: 100px;
+            padding: 30px;
+            background-color: lightblue;
+        }
+
+        .div3 {
+            width: 300px;
+            height: 100px;
+            background-color: lightpink;
+            box-sizing: border-box;
+        }
+
+        .div4 {
+            width: 300px;
+            height: 100px;
+            padding: 30px;
+            background-color: lightblue;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 預設的會走鐘 -->
+    <h1>content-box (default)</h1>
+
+    <div class="div1">This div is smaller (width is 300px and height is 100px).</div>
+    <br>
+    <div class="div2">This div is bigger (width is also 300px and height is 100px).</div>
+
+    <!-- 只要做box都要用border-box才不會變形 -->
+    <h1>box-sizing: border-box;</h1>
+
+    <div class="div3">This div is smaller (width is 300px and height is 100px).</div>
+    <br>
+    <div class="div4">This div is bigger (width is also 300px and height is 100px).</div>
+</body>
+
+</html>

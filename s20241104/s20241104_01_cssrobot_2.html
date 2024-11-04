@@ -76,6 +76,12 @@
 
         /* 身體 + 手 */
         /* 身體 */
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
         .body {
             width: 180px;
             height: 220px;
@@ -86,6 +92,31 @@
             margin: 15px auto;
             padding: 50px;
             text-align: center;
+        }
+
+        .leftarm {
+            width: 80px;
+            height: 150px;
+            background-color: #f5f5dc;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            margin: auto;
+            display: inline-block;
+
+        }
+
+        .rightarm {
+            width: 80px;
+            height: 150px;
+            background-color: #f5f5dc;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            margin: auto;
+            transform: rotate(-90deg);
+            /* 向上 */
+            position: relative;
+            top: -50px;
+            display: inline-block;
         }
 
         /* 腿 */
@@ -151,20 +182,26 @@
     </div>
 
     <!-- 身體 -->
-    <div class="body">
+    <div class="main">
+        <!-- 左手 -->
         <div class="leftarm">
-
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><span style="font-size: 36px; font-family: 'Lucida Sans', sans-serif;">x</span>
-    </div>
+        <!-- 身體 -->
+        <div class="body">
 
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br><span style="font-size: 36px; font-family: 'Lucida Sans', sans-serif; color:rgb(14, 146, 14)">x</span>
+        </div>
+        <!-- 右手 -->
+        <div class="rightarm">
+        </div>
+    </div>
     <!-- 腿 -->
     <div class="leg">
         <!-- 左腿 -->

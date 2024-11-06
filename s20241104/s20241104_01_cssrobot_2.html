@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
         body {
-            background-color: rgb(243, 242, 240);
+            background-color: rgb(248, 241, 230);
         }
 
         /* 頭頂圓圈 */
@@ -24,7 +24,7 @@
         /* 頭頂直線 */
         .top {
             width: 10px;
-            height: 30px;
+            height: 20px;
             border: 1px;
             background-color: rgb(124, 16, 16);
             box-shadow: 0 0 5px rgb(0, 0, 0, 0.5);
@@ -33,8 +33,8 @@
 
         /* 頭 */
         .head {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             /* border: 5px solid black; */
             background-color: rgb(245, 66, 66);
             border-radius: 50%;
@@ -54,7 +54,7 @@
             height: 30px;
             border-radius: 50%;
             background-color: black;
-            margin: 60px 30px 20px;
+            margin: 50px 25px 20px;
         }
 
         /* 眼睛白色 */
@@ -68,23 +68,23 @@
         /* 嘴 */
         .mouth {
             width: 120px;
-            height: 30px;
+            height: 35px;
             border-radius: 10px;
             background-color: rgb(252, 247, 232);
             margin: auto;
         }
 
         /* 身體 + 手 */
-        /* 身體 */
         .main {
             display: flex;
             justify-content: center;
             align-items: flex-start;
         }
 
+        /* 身體 */
         .body {
             width: 180px;
-            height: 220px;
+            height: 200px;
             /* border: 5px solid black; */
             background-color: rgb(109, 199, 109);
             border-radius: 20px 20px 0 0;
@@ -94,31 +94,29 @@
             text-align: center;
         }
 
+        /* 手臂 */
         .leftarm {
             width: 80px;
             height: 150px;
-            background-color: #f5f5dc;
+            background-color: #ffb451;
             border-radius: 10px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             margin: 0;
-            display: inline-block;
-
+            transform: rotate(-175deg);
+            /* 旋轉角度 */
         }
 
         .rightarm {
             width: 80px;
             height: 150px;
-            background-color: #f5f5dc;
+            background-color: #bf59fa;
             border-radius: 10px;
             box-shadow: 0 0 5px rgba(102, 101, 101, 0.5);
             margin: 0;
-            transform: rotate(-80deg);
-            /* 向上 */
-            transform-origin: 80% 50%;
+            transform: rotate(-166deg);
+            /* 旋轉角度 */
+            transform-origin: 45% 12%;
             /* 設定旋轉中心點 */
-            position: relative;
-            top: -50px;
-            display: inline-block;
         }
 
         /* 腿 */
@@ -129,30 +127,27 @@
 
         /* 左腿 */
         .leftleg {
-            width: 40px;
-            height: 20px;
+            width: 110px;
+            height: 100px;
             /* border: 5px solid black; */
             background-color: rgb(101, 101, 240);
             border-radius: 20px 20px 0 0;
             box-shadow: 0 0 5px rgba(121, 120, 120, 0.5);
-            margin: 0 20px;
-            padding: 50px;
+            margin: -20px 15px 0 auto;
             display: inline-block;
-            text-align: center;
         }
 
         /* 右腿 */
         .rightleg {
-            width: 40px;
-            height: 20px;
+            width: 110px;
+            height: 100px;
             /* border: 5px solid black; */
             background-color: rgb(241, 212, 117);
             border-radius: 20px 20px 0 0;
             box-shadow: 0 0 5px rgba(121, 120, 120, 0.5);
-            margin: 0 20px;
-            padding: 50px;
+            margin: -20px auto 0 15px;
             display: inline-block;
-            text-align: center;
+
         }
     </style>
 </head>

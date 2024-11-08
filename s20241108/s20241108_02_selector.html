@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 子代選擇器(下一層) */
+        div>p {
+            background-color: lightblue;
+        }
+
+        /* 後代選擇器(全部) */
+        div p {
+            background-color: lightpink;
+        }
+
+        /* 相鄰兄弟選擇器 與div相鄰的元素(不能被任何元素阻隔) */
+        div+p {
+            background-color: lightsalmon;
+        }
+
+        /* 兄弟選擇器 與div同層的元素 */
+        div~p {
+            background-color: lightsalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>CSS Selectors</h3>
+    <hr>
+    <h3>Combinators selectors</h3>
+    <div>
+        <p>p1 Lorem ipsum dolor sit amet.</p>
+        <p>p2 Lorem ipsum dolor sit amet.</p>
+        <main>
+            <p>p3 Lorem ipsum dolor sit amet.</p>
+        </main>
+        <p>
+            p4 Lorem ipsum dolor sit amet.
+        </p>
+    </div>
+    <p>
+        p5 Lorem ipsum dolor sit amet.
+    </p>
+    <p> p6 Lorem ipsum dolor sit amet.</p>
+</body>
+
+</html>

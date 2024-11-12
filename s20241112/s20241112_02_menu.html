@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENU</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            width: 80%;
+            height: 80vh;
+            background-color: rgb(245, 204, 194);
+            border-radius: 8px;
+        }
+
+        .item {
+            display: flex;
+            width: 95%;
+            height: 20vh;
+            background-color: #fdf1e8;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 0 4px rgba(138, 103, 103, 0.5);
+        }
+
+        .item>.box {
+            width: 20%;
+            height: 18vh;
+            /* background-color: lightpink; */
+            text-align: center;
+            color: brown;
+            margin: 10px;
+        }
+
+        /* 品名 */
+        .name {
+            padding: 60px 0;
+            font-size: 24px;
+        }
+
+        /* 價格 */
+        .price {
+            padding: 60px 0;
+            font-size: 24px;
+        }
+
+        /* 數量輸入框 */
+        .num {
+            width: 80px;
+            height: 30px;
+            font-size: 18px;
+            padding: 35px 0;
+            border-radius: 8px;
+            color: brown;
+            text-align: center;
+        }
+
+        /* 隱藏上下箭頭 */
+        .num::-webkit-outer-spin-button,
+        .num::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* 小計 */
+        .subtotal {
+            width: 200px;
+            text-align: center;
+            font-size: 16px;
+            color: brown;
+            padding: 60px 0;
+        }
+
+        /* 小計前的字 */
+        .subtotal::before {
+            content: "NT $";
+        }
+
+        /* 小計後的字 */
+        .subtotal::after {
+            content: "元";
+        }
+
+        .pic1 {
+            background-image: url(./image/drink-3131322_1280.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .pic2 {
+            background-image: url(./image/beverages-735008_1280.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .pic3 {
+            background-image: url(./image/drink-405546_1280.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 最大box -->
+    <div class="container">
+        <!-- item1 -->
+        <div class="item">
+            <div class="box pic1">
+
+            </div>
+            <div class="box name">
+                珍珠奶茶
+            </div>
+            <div class="box price">
+                90 元
+            </div>
+            <div class="box num">
+                <input class="num" type="number" name="num" id="num">
+            </div>
+            <div class="box subtotal">
+                total
+            </div>
+        </div>
+        <!-- item2 -->
+        <div class="item">
+            <div class="box pic2">
+
+            </div>
+            <div class="box name">
+                芒果冰沙
+            </div>
+            <div class="box price">
+                100 元
+            </div>
+            <div class="box num">
+                <input class="num" type="number" name="num" id="num">
+            </div>
+            <div class="box subtotal">
+                total
+            </div>
+        </div>
+        <!-- item3 -->
+        <div class="item">
+            <div class="box pic3">
+
+            </div>
+            <div class="box name">
+                水果茶
+            </div>
+            <div class="box price">
+                100 元
+            </div>
+            <div class="box num">
+                <input class="num" type="number" name="num" id="num">
+            </div>
+            <div class="box subtotal">
+                total
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

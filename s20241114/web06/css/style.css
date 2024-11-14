@@ -34,6 +34,8 @@ aside {
 }
 
 .aside-header {
+    color: #000000;
+    font-size: 16px;
     width: 215px;
     /* flex-basis: 100px */
     /* height: calc(100% - 25px) */
@@ -42,7 +44,29 @@ aside {
     /* background-color: lightpink; */
     border: 1px solid black;
     border-right: 0;
+    font-family: '標楷體', 'Times New Roman', Times, serif;
+    font-weight: 500;
+    text-align: center;
+}
 
+.introduce {
+    color: #ff00ff;
+    font-size: 24px;
+    font-size: x-large;
+    text-decoration: underline;
+}
+
+.group {
+    width: 100%;
+    height: 50px;
+    background-image: url(../17300-104301/menu1.png);
+    background-repeat: no-repeat;
+    margin: auto;
+    text-align: center;
+}
+
+.group:hover {
+    background-image: url(../17300-104301/menu2.png);
 }
 
 .aside-footer {
@@ -52,6 +76,10 @@ aside {
     border: 1px solid black;
     border-top: 0;
     border-right: 0;
+    color: #000000;
+    font-size: 16px;
+    font-family: '標楷體', 'Times New Roman', Times, serif;
+    text-align: center;
 }
 
 /* containerright */
@@ -74,7 +102,27 @@ main {
     height: calc(100% - 29px);
     /* background-color: rgb(229, 151, 248); */
     border: 1px solid black;
+    background-image: url(../17300-104301/0101.jpg);
+}
 
+.main-footer-img {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    background-image: url(../17300-104301/0104.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 22px;
+}
+
+.font {
+    /* width: 500px; */
+    font-size: 24px;
+    font-family: '標楷體', 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+    color: #0000FF;
+    text-align: center;
 }
 
 /* footer */
@@ -84,4 +132,8 @@ footer {
     /* background-color: rgb(245, 213, 178); */
     border: 1px solid black;
     border-top: 0;
+    font-family: '標楷體', 'Times New Roman', Times, serif;
+    color: #000000;
+    text-align: center;
+    font-size: 16px;
 }

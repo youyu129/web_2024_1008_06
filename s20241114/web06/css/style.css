@@ -12,6 +12,7 @@ header {
 
 /* container */
 .container {
+    display: flex;
     width: 1024px;
     /* - 65px ok */
     /* -65px ng */
@@ -20,10 +21,18 @@ header {
 }
 
 /* container-left */
-.container-left {}
+aside {
+    width: 215px;
+    height: calc(768px - 65px - 20px);
+    background-color: rgb(214, 183, 243);
+}
 
 /* containerright */
-.containerright {}
+main {
+    width: calc(1024px - 215px);
+    height: calc(768px - 65px - 20px);
+    background-color: rgb(245, 225, 250);
+}
 
 /* footer */
 footer {

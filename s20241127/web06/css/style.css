@@ -89,7 +89,7 @@
 
 .main {
     width: calc(1024px - 215px);
-    height: 100%;
+    height: calc(768px - 65px - 20px);
     /* background-color: lightcyan; */
     /* border: 1px solid black; */
 }
@@ -121,4 +121,14 @@
     border: 1px solid black;
     border-top: 0;
     margin: auto;
+    font-family: '標楷體';
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    /* background-color: lightblue; */
 }

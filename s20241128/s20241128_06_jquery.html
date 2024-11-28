@@ -38,8 +38,9 @@
     <script>
         $(document).ready(function () {
             // 1.bind
-            let box = $('#box');
-            let myInput = $('#myInput');
+            // 避免未來被改掉，綁定都用const
+            const box = $('#box');
+            const myInput = $('#myInput');
             console.log('box', box);
 
             // js innerText

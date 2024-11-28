@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            /* background-color: lightblue; */
+        }
+
+        .bg-blue {
+            background-color: lightblue;
+        }
+
+        .bg-pink {
+            background-color: lightpink;
+        }
+
+        .bg-green {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="bg-blue" onclick="boxFun()">
+
+    </div>
+
+    <script>
+        // 1. div
+        function boxFun() {
+            console.log('hello box');
+            box.setAttribute('class', 'bg-pink');
+        }
+
+        // bg-color
+        // document => object
+        // getElementById => method
+        let box = document.getElementById('box');
+
+        // js 讓 css 改變 change css
+        // box.style.backgroundColor = "lightpink";
+
+        // js 讓 class 改變 change class
+        // 方法一
+        // box.classList.remove("bg-blue");
+        // box.classList.add("bg-pink");
+
+        // 方法二 attributes
+        // box.setAttribute("class", "bg-pink");
+        // box.setAttribute("class", "bg-green");
+
+        // event
+    </script>
+</body>
+
+</html>

@@ -38,11 +38,15 @@
 
         // 1. 綁定
         let box = document.getElementById('box');
+        let count = 0;
 
         // 2. 事件
         // addEventListener => method 裡面有兩個參數
         box.addEventListener('click', function () {
             console.log('box click ok');
+            box.setAttribute('class', 'bg-pink');
+            count++;
+            console.log(`now ${count}`);
         })
     </script>
 </body>

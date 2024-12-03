@@ -212,20 +212,21 @@
     <script>
         $(document).ready(function () {
             // 1. 綁定
-            let box1 = $('#box1');
-            let box2 = $('#box2');
-            let box3 = $('#box3');
+            const box1 = $('#box1');
+            const box2 = $('#box2');
+            const box3 = $('#box3');
 
-            // 呈現特價價格
-
+            // 點擊時轉換為特價價格 轉換class為sale
             box1.click(function (e) {
                 box1.text('1199');
                 box1.attr('class', 'sale1')
             })
+
             box2.click(function (e) {
                 box2.text('1699');
                 box2.attr('class', 'sale2')
             })
+
             box3.click(function (e) {
                 box3.text('3399');
                 box3.attr('class', 'sale3')

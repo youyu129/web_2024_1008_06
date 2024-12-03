@@ -28,15 +28,22 @@
                 let getScreenWidth = window.screen.width;
                 console.log('getScreenWidth');
 
-                // href
+                // js轉址
+                // 1. href = ''
                 window.location.href = './s20241203_01_dom_html';
 
-                // replace 不能返回上一頁
+                // 2. replace() 不能返回上一頁
                 window.location.replace('./s20241203_01_dom_html');
 
-                // toUrl function
+                // 3. assign()
+                window.location.assign('./s20241203_01_dom_html');
+
+                // 4. 自定義function toUrl function
                 let url = './s20241203_01_dom_html';
                 toUrl(url);
+
+                // php 轉址
+                // header("Location:admissions.php?success");
             })
         });
     </script>

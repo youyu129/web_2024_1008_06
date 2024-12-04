@@ -17,7 +17,6 @@
             justify-content: space-around;
             width: 80%;
             margin: auto;
-
         }
 
         .box {
@@ -47,15 +46,19 @@
             <p>
                 <button type="button" id="myBtn">myBtn</button>
             </p>
-            <p>
-                <span id="box1Span"></span>
-            </p>
+
         </div>
         <div class="box">
             sum = ?
+            <p>
+                <span id="box2Span"></span>
+            </p>
         </div>
         <div class="box">
             sum x 10 = ?
+            <p>
+                <span id="box3Span"></span>
+            </p>
         </div>
     </div>
 
@@ -71,6 +74,8 @@
             const num2 = $('#num2');
             const myBtn = $('#myBtn');
             const box1Span = $('#box1Span');
+            const box2Span = $('#box2Span');
+            const box3Span = $('#box3Span');
 
             // 2. action
             myBtn.click(function (e) {
@@ -94,8 +99,15 @@
                 let sum = num1Value + num2Value;
                 console.log('sum', sum);
 
-                // 4. show result box1Span
+                // 4.show result box1Span
                 box1Span.text(`${num1Value} + ${num2Value} = ${sum}`);
+
+                // 5.show result box2Span
+                box2Span.text(`${num1Value} + ${num2Value} = ${sum}`);
+
+                // 6.show result box3Span
+                let x10Result = sum * 10;
+                box3Span.text(`${sum} x 10 = ${x10Result}`);
             })
         });
     </script>

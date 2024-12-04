@@ -20,10 +20,23 @@
             // 1. bind
             const myBtn = $('#myBtn');
 
+            // 寫在外面的好處：可以直接呼叫
+            let myFunVariable = function myFun() {
+                console.log('hi myFun');
+            };
+
+            function myFunOut() {
+                console.log('hi myFun');
+            };
+
+            console.log('myFunVariable', myFunVariable);
+            myFunOut();
+
             // 2. action
             myBtn.click(function (e) {
                 console.log('Hello myBtn');
 
+                // 寫在裡面的好處：不用另外命名function
                 setTimeout(function () {
                     console.log('myBtn wait~');
                 }, 3000)

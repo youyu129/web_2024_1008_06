@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="myBtn">myBtn</button>
+
+    <h1 id="myH1"></h1>
+    <h1 id="myH2"></h1>
+    <h1 id="myH3"></h1>
+
+    <a href="./getDataHw.php"></a>
+
+
+    <!-- ajax ? -->
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            // 1.bind
+            const myH1 = $('#myH1');
+            const myH2 = $('#myH2');
+            const myH3 = $('#myH3');
+            const myBtn = $('#myBtn');
+
+            // 2.action
+            myBtn.click(function (e) {
+                // ajax
+                $.ajax({
+                    type: "get",
+                    url: "./getDataHW.php",
+                    // data: "data",
+                    dataType: "json",
+                    success: function (response) {
+                        console.log('response', response);
+                        // console.log('response typeof', typeof (response));
+
+                        // console.log('response.s1', response.s1);
+
+                        myH1.text(response.name);
+                        myH2.text(response.mobile);
+                        myH3.text(response.word);
+
+                    }
+                });
+
+            });
+
+
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

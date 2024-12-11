@@ -18,6 +18,11 @@
             padding: 8px;
             text-align: center;
         }
+
+        .text-red {
+            color: red;
+            font-size: 30px;
+        }
     </style>
 </head>
 
@@ -126,6 +131,7 @@
     <script>
         $(document).ready(function () {
             // function 計算
+            // get all Result => sum
             function getSum(data) {
                 let getTotal1Value = Number(total1.text());
                 let getTotal2Value = Number(total2.text());
@@ -133,9 +139,32 @@
 
                 let sum = getTotal1Value + getTotal2Value + getTotal3Value;
                 console.log('getSum', sum);
+
+
+                // > 200 元打8折
+                // 其他 原價
+                // 重構後寫法
+                if (sum >= 200) {
+                    sum = sum * 0.8;
+                    sumResult.attr('class', 'text-red');
+                } else {
+                    sumResult.attr('class', '');
+                    // sumResult.removeClass('text-red');
+                }
                 let resultString = `${sum} 元`;
                 sumResult.text(resultString);
             }
+
+            // 原始寫法
+            //     if (sum >= 200) {
+            //         sum = sum * 0.8;
+            //         let resultString = `${sum} 元`;
+            //         sumResult.text(resultString);
+            //     } else {
+            //         let resultString = `${sum} 元`;
+            //         sumResult.text(resultString);
+            //     }
+            // }
 
             // 1.bind
             const price1 = $('#price1');

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>If you click on the "Hide" button, I and box will disappear.</p>
+
+    <button id="slideUp">slideUp</button>
+    <button id="slideDown">slideDown</button>
+    <button id="slideToggle">slideToggle</button>
+
+    <div id="box">
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 1.bind
+            const box = $('#box');
+            const slideUp = $('#slideUp');
+            const slideDown = $('#slideDown');
+            const slideToggle = $('#slideToggle');
+
+            // 2.action
+            // milliseconds毫秒 slow慢 fast快 也可以不輸入
+            slideUp.click(function (e) {
+                box.slideUp(3000);
+            })
+
+            slideDown.click(function (e) {
+                box.slideDown(3000);
+            })
+
+            slideToggle.click(function (e) {
+                box.slideToggle();
+            })
+
+        });
+    </script>
+</body>
+
+</html>

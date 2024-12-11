@@ -32,6 +32,7 @@
             <th width="10%">num</th>
             <th>total</th>
         </tr>
+
         <tr>
             <td>
                 <img src="https://picsum.photos/id/20/180/160" alt="" srcset="">
@@ -107,12 +108,35 @@
                 </p>
             </td>
         </tr>
-
+        <tr>
+            <td colspan="3">
+                <p>
+                    總共金額為
+                </p>
+            </td>
+            <td>
+                <p id="sumResult">
+                    0 元
+                </p>
+            </td>
+        </tr>
     </table>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+            // function 計算
+            function getSum(data) {
+                let getTotal1Value = Number(total1.text());
+                let getTotal2Value = Number(total2.text());
+                let getTotal3Value = Number(total3.text());
+
+                let sum = getTotal1Value + getTotal2Value + getTotal3Value;
+                console.log('getSum', sum);
+                let resultString = `${sum} 元`;
+                sumResult.text(resultString);
+            }
+
             // 1.bind
             const price1 = $('#price1');
             const input1 = $('#input1');
@@ -126,6 +150,9 @@
             const input3 = $('#input3');
             const total3 = $('#total3');
 
+            const sumResult = $('#sumResult');
+            let sum = 0;
+
             // 2.action
             input1.change(function (e) {
                 console.log('change ok');
@@ -138,6 +165,9 @@
                 console.log(getInput1Value);
                 console.log(result1);
                 total1.text(result1);
+
+                getSum();
+
             })
 
             input2.change(function (e) {
@@ -149,7 +179,10 @@
                 console.log(getInput2Value);
                 console.log(result2);
                 total2.text(result2);
-            })
+
+                getSum();
+
+            });
 
             input3.change(function (e) {
                 console.log('change ok');
@@ -160,6 +193,9 @@
                 console.log(getInput3Value);
                 console.log(result3);
                 total3.text(result3);
+
+                getSum();
+
             });
 
         });

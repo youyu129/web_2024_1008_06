@@ -57,6 +57,21 @@
         input[type="number"] {
             text-align: center;
         }
+
+        .del {
+            text-decoration: line-through;
+        }
+
+        .goTop {
+            width: 40px;
+            height: 40px;
+            background-color: #e2e0e0;
+            border: none;
+            position: fixed;
+            right: 0;
+            top: 30vh;
+            border-radius: 8px;
+        }
     </style>
 </head>
 
@@ -226,21 +241,37 @@
             </td>
         </tr>
         <tr>
+        <tr>
             <td colspan="4" height="100px">
                 <p style="font-weight: bold;font-size: 18px;text-align: right;">
                     總金額
                 </p>
-                <p style="text-align: right;">
-                    (滿 5000 享75折優惠)
-                </p>
+
             </td>
             <td>
-                <p id="sumResult">
+                <p id="sumPrice">
                     0 元
                 </p>
             </td>
         </tr>
+        <td colspan="4" height="100px">
+            <p style="font-weight: bold;font-size: 20px;text-align: right;">
+                優惠價
+            </p>
+            <p style="text-align: right;">
+                (滿 5000 元，即享75折優惠)
+            </p>
+        </td>
+        <td>
+            <p id="sumResult">
+                0 元
+            </p>
+        </td>
+        </tr>
+
     </table>
+    <button class="goTop" id="goTop">Top</button>
+    <div></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -260,17 +291,22 @@
                 // > 5000 元打75折
                 // 其他 原價
                 // 重構後寫法
-                if (sum >= 5000) {
-                    sum = sum * 0.75;
-                    sumResult.attr('class', 'text-red');
-                } else {
-                    sumResult.attr('class', '');
-                    // sumResult.removeClass('text-red');
-                }
-                let resultString = `${sum} 元`;
-                sumResult.text(resultString);
-            }
+                if (sum >= 0) {
+                    let priceString = `${sum} 元`;
+                    sumPrice.text(priceString);
+                    if (sum >= 5000) {
+                        sum = sum * 0.75;
+                        sumResult.attr('class', 'text-red');
+                        sumPrice.attr('class', 'del');
+                    } else {
+                        sumResult.attr('class', '');
+                        // sumResult.removeClass('text-red');
+                    }
 
+                    let resultString = `${sum} 元`;
+                    sumResult.text(resultString);
+                }
+            }
             // 1.bind
             const price1 = $('#price1');
             const input1 = $('#input1');
@@ -288,6 +324,7 @@
             const input4 = $('#input4');
             const total4 = $('#total4');
 
+            const sumPrice = $('#sumPrice');
             const sumResult = $('#sumResult');
             let sum = 0;
 
@@ -350,6 +387,16 @@
 
             });
 
+        });
+
+        $("#goTop").click(function (e) {
+            e.preventDefault();
+            $("html,body").animate(
+                {
+                    scrollTop: 0,
+                },
+                600
+            );
         });
     </script>
 

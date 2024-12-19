@@ -54,6 +54,7 @@
         $(document).ready(function () {
             // 1.bind
             const td = $('td');
+            const th = $('th');
 
             // 2.action
             td.hover(function () {
@@ -61,6 +62,13 @@
                 $(this).attr('class', 'text-danger');
             }, function () {
                 console.log('hover out');
+                $(this).attr('class', '');
+            }
+            );
+
+            th.hover(function () {
+                $(this).attr('class', 'fs-5');
+            }, function () {
                 $(this).attr('class', '');
             }
             );

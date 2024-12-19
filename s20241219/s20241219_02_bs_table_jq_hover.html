@@ -16,19 +16,27 @@
     <div class="container mt-3">
         <h2>Hover Rows</h2>
         <p>The .table-hover class enables a hover state (grey background on mouse over) on table rows:</p>
+        <!-- table-responsive 表格水平卷軸(少用，如財務資料等) -->
         <table class="table table-hover">
+            <!-- bootstrap 才有 thead 跟 tbody -->
             <thead>
                 <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
+                    <th>id</th>
+                    <th>pic</th>
+                    <!-- 表格太長的話，可以用desc + p標籤，讓一格內有多個內容 -->
+                    <th>desc</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>John</td>
                     <td>Doe</td>
-                    <td>john@example.com</td>
+                    <td>
+                        <p>john@example.com</p>
+                        <p>john@example.com</p>
+                        <p>john@example.com</p>
+                        <p>john@example.com</p>
+                    </td>
                 </tr>
                 <tr>
                     <td>Mary</td>

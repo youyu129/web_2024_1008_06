@@ -17,6 +17,7 @@
     <style>
         body {
             margin: 0;
+            padding: 0;
         }
 
         div {
@@ -100,16 +101,7 @@
             display: block !important;
         }
 
-        /* GLOBAL STYLES
--------------------------------------------------- */
-        /* Padding below the footer and lighter body text */
-
-        body {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-            color: rgb(var(--bs-tertiary-color-rgb));
-        }
-
+        /* carousel */
         .carousel-caption {
             z-index: 10;
         }
@@ -118,39 +110,6 @@
         .carousel-item {
             height: 80vh;
         }
-
-
-        /* MARKETING CONTENT
--------------------------------------------------- */
-
-        /* Center align the text within the three columns below the carousel */
-        .marketing .col-lg-4 {
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        /* rtl:begin:ignore */
-        .marketing .col-lg-4 p {
-            margin-right: .75rem;
-            margin-left: .75rem;
-        }
-
-
-        .featurette-divider {
-            margin: 5rem 0;
-            /* Space out the Bootstrap <hr> more */
-        }
-
-        /* Thin out the marketing headings */
-        /* rtl:begin:remove */
-        .featurette-heading {
-            letter-spacing: -.05rem;
-        }
-
-        /* rtl:end:remove */
-
-        /* RESPONSIVE CSS
--------------------------------------------------- */
 
         @media (min-width: 40em) {
 
@@ -176,7 +135,7 @@
         .top {
             position: sticky;
             top: 0;
-            z-index: 1030;
+            z-index: 1000;
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
         }
@@ -221,6 +180,31 @@
         .bg-pink {
             background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hanau.com.tw%2Fworks%2Fdetail%2FHD-8417&psig=AOvVaw1sqFosXzDzG79hOtJi3F_O&ust=1735194901922000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIDm2fGmwooDFQAAAAAdAAAAABAE);
         }
+
+        footer {
+            color: white;
+        }
+
+        .highlight-block {
+            background-color: #38342e;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0.5;
+        }
+
+        #backToTopBtn {
+            position: fixed;
+            /* 固定定位 */
+            bottom: 20px;
+            /* 從底部20px */
+            right: 20px;
+            /* 從右邊20px */
+            z-index: 1050;
+            /* 確保按鈕在最上層，避免被 footer 等遮擋 */
+            display: none;
+            /* 預設不顯示 */
+        }
     </style>
 </head>
 
@@ -247,12 +231,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link" aria-current="page" href="#story">品牌故事</a>
                         </li>
 
                         <!-- 下拉選單 -->
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown ms-3">
                             <a class="nav-link dropdown-toggle" href="#product" id="product" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 找地板
@@ -263,13 +247,12 @@
                                 <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="#laminate">超耐磨木地板</a></li>
                                 <li><a class="dropdown-item" href="#wood">德國實木地板</a></li>
-                                <li><a class="dropdown-item" href="#spc">SPC石塑卡扣地板</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link" aria-current="page" href="#shop">展示中心</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <a class="nav-link" aria-current="page" href="#contact">聯絡我們</a>
                         </li>
                     </ul>
@@ -314,9 +297,36 @@
                 </button>
             </div>
         </div>
+        <!-- 木地板介紹 -->
+        <div class="vh-75 mt-5 mb-5 mt-5">
+            <div class="" id="">
+                <h2 class="fw-bold text-center">為何選用Woodenfloor</h2>
+                <hr class="mx-auto" style="width: 15%; border-top: 2px solid #999;">
+                <div class="row">
+                    <div class="col-sm-4 text-center mb-4 mt-5">
+                        <p class="mb-5 fw-bold fs-4">Woodenfloor原料純粹自然，獨家天然塗層技術</p>
+                        <img src="https://www.haroflooring.com.tw/wp-content/uploads/laminate-100-square.jpg" alt=""
+                            class="img-fluid">
+                    </div>
+                    <div class="col-sm-4 text-center mb-4 mt-5">
+                        <p class="mb-5 fw-bold fs-4">採用可持續林業的 PEFC 認證木材</p>
+                        <img src="https://www.mingjyun.com.tw/cdn/shop/articles/PEFC.jpg?v=1590737489" alt=""
+                            class="img-fluid">
 
+                    </div>
+                    <div class="col-sm-4 text-center mb-4 mt-5">
+                        <p class="mb-5 fw-bold fs-4">擁有國際認證建康環保標章共12個</p>
+                        <img src="https://www.kronotex.com.tw/USER/Userfile/file/ff240223114538417672.png" alt=""
+                            class="img-fluid">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <hr class="featurette-divider">
         <!-- 品牌故事 story -->
-        <div class="vh-75 mt-5">
+        <div class="vh-75 mt-5 mb-5 mt-5">
             <div class="story" id="story">
                 <div class="row">
                     <div class="col-sm-7 text-center mb-4 mt-5">
@@ -342,7 +352,7 @@
         <div class="vh-75">
             <div class="product" id="product">
                 <!-- 最受歡迎 popular -->
-                <div class="container" id="popular">
+                <div class="container mb-5 mt-5" id="popular">
                     <div class="row">
                         <div class="col-sm-3">
                             <h2 class="fw-bold mt-5">最受歡迎</h2>
@@ -372,7 +382,7 @@
                     <hr class="featurette-divider">
 
                     <!-- 超耐磨木地板 laminate -->
-                    <div class="container h-50" id="laminate">
+                    <div class="container h-50 mb-5 mt-5" id="laminate">
                         <div class="row">
                             <div class="col-sm-3 mouseenter">
                                 <h2 class="fw-bold mt-5">超耐磨木地板</h2>
@@ -403,21 +413,21 @@
                             </div>
                             <div class="col-sm-3 mouseenter">
                                 <div id="pic7">
-                                    <img src="./image/A04海德堡橡木.jpg" alt="" class=" img-fluid" data-bs-toggle="tooltip"
+                                    <img src="./image/A04海德堡橡木.jpg" alt="" class="img-fluid" data-bs-toggle="tooltip"
                                         title="點我看實景">
                                 </div>
                                 <p class="text-center fw-bold">A04海德堡橡木</p>
                             </div>
                             <div class="col-sm-3 mouseenter">
                                 <div id="pic8">
-                                    <img src="./image/A05巴登灰橡木.jpg" alt="" class=" img-fluid" data-bs-toggle="tooltip"
+                                    <img src="./image/A05巴登灰橡木.jpg" alt="" class="img-fluid" data-bs-toggle="tooltip"
                                         title="點我看實景">
                                 </div>
                                 <p class="text-center fw-bold">A05巴登灰橡木</p>
                             </div>
                             <div class="col-sm-3 mouseenter">
                                 <div id="pic9">
-                                    <img src="./image/A06挪威深橡木.jpg" alt="" class=" img-fluid" data-bs-toggle="tooltip"
+                                    <img src="./image/A06挪威深橡木.jpg" alt="" class="img-fluid" data-bs-toggle="tooltip"
                                         title="點我看實景">
                                 </div>
                                 <p class="text-center fw-bold">A06挪威深橡木</p>
@@ -427,7 +437,7 @@
                     <hr class="featurette-divider">
 
                     <!-- 德國實木地板 wood -->
-                    <div class="container" id="wood">
+                    <div class="container mb-5 mt-5" id="wood">
                         <div class="row">
                             <div class="col-sm-3 mouseenter">
                                 <h2 class="fw-bold mt-5">德國實木地板</h2>
@@ -491,7 +501,7 @@
             <!-- 展示中心 shop -->
             <div class="vh-75">
                 <div class="shop" id="shop">
-                    <div class="contact mb-5" id="shop">
+                    <div class="contact mb-5 mt-5" id="shop">
                         <div class="row">
                             <!-- youtube -->
                             <div class="col-sm-6 text-center mb-4">
@@ -641,7 +651,7 @@
             <hr class="featurette-divider">
 
             <!-- iframe -->
-            <div class="contact mb-5" id="contact">
+            <div class="contact mb-5 mt-5" id="contact">
                 <div class="row">
                     <!-- youtube -->
                     <div class="col-sm-5 mx-auto mb-3">
@@ -665,7 +675,7 @@
                 </div>
 
             </div>
-            <hr class="featurette-divider">
+
             <!-- form -->
 
             <!-- top button -->
@@ -676,15 +686,17 @@
                 top</button>
 
             <!-- FOOTER -->
-            <footer class="container">
+            <footer class="footer position-relative highlight-block pt-3 mx-0 pb-0 mb-0">
                 <div class="row">
-                    <div class="col-sm-7">
+                    <div class="col-sm-1 text-crnter">
+                    </div>
+                    <div class="col-sm-6 text-crnter mt-5">
                         <p> Copyright &copy; 2024 woodenfloor.all rights reserved.&middot; <a href="#">Privacy</a>
                             &middot;
                             <a href="#">Terms</a>
                         </p>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <p class="fw-bold">Woodenfloor</p>
                         <hr>
                         <p>營業時間：週二~週六 10：00~19：00</p>

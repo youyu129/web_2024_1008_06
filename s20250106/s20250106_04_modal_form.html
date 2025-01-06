@@ -65,7 +65,7 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <label for="">Edit Name</label>
-                        <input type="text" name="editname" id="editname">
+                        <input type="text" name="editname" id="editname" class="form-name">
                     </div>
 
                     <!-- Modal footer -->
@@ -160,6 +160,9 @@
             // 2.action
             myEdit.click(function (e) {
                 editModal.show();
+
+                let tmpName = editModal.find('.form-name');
+                tmpName.val(getID);
             });
         });
     </script>

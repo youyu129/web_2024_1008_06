@@ -84,10 +84,10 @@
         // data -> append table
 
         // 方法一
-        // .class
-        // $(selector).each(function(index,element){
-        // element == this
-        // })
+        .class
+        $(selector).each(function(index,element){
+        element == this
+        })
 
         // 方法二
         $.each(data, function(key, value) {

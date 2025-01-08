@@ -11,22 +11,97 @@
 
     <script>
         let myArr = [1, 2, 3, 4, 5];
+        let newArr = [];
+        let sum = 0;
+        console.log('myArr', myArr);
+        myArr.push(6);
         console.log('myArr', myArr);
 
         // js method
+        // myArr.forEach(function (value) {
+        //     console.log('value', value);
+        //     let tmp = value * 2;
+        //     newArr.push(tmp);
+        // })
+
+        // let mapArr = myArr.map(function (value) {
+        //     return value * 2;
+        // })
+
+        // console.log('mapArr', mapArr);
+
+
+
+
+        // myArr.forEach(function (value) {
+        //     if (value > 3) {
+        //         newArr.push(value);
+        //     }
+        // });
+
+        // let filterArr = myArr.filter(function (value) {
+        //     return value > 3;
+        // })
+
+
+
+
         myArr.forEach(function (value) {
-            console.log('value', value);
+            sum += value;
+        });
+        console.log('sum', sum);
+
+        let reduceArr = myArr.reduce(function (total, value) {
+            return total + value;
         })
+
+        // console.log('filterArr', filterArr);
+        // console.log('reduceArr', reduceArr);
+
+
+
+
+        // console.log('myArr', myArr);
+        // console.log('newArr', newArr);
 
         // jquert method
-        $.each(collection, function (indexInArray, valueOfElement) {
+        // $.each(collection, function (indexInArray, valueOfElement) {
 
-        })
+        // })
 
         // jquert method
-        $(selector).each(function (index, element) {
-            // element == this
+        // $(selector).each(function (index, element) {
+        // element == this
+        // })
+
+
+        // 挑戰
+        // 1.增加10%薪水
+        // 2.當我薪水超過30000，增加bonus 5000
+        // 3.總共要發多少錢
+
+        let salary = [10000, 20000, 30000, 40000, 50000];
+        let newSalary = [];
+        let bonusSalary = [];
+        let sumSalary = 0;
+
+        salary.forEach(function (value) {
+            let tmp = value * (1.1);
+            newSalary.push(tmp);
+            if (tmp > 30000) {
+                let bonus = tmp + 3000;
+                bonusSalary.push(bonus);
+            }
         })
+
+        newSalary.forEach(function (tmp) {
+            sumSalary += tmp
+        })
+
+        console.log('newSalary', newSalary);
+        console.log('bonusSalary', bonusSalary);
+        console.log('sumSalary', sumSalary);
+
     </script>
 </body>
 

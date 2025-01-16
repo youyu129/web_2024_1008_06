@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="container mt-3">
+    <div class="container mt-3 text-center">
         <h2>9*9 Table</h2>
 
         <table class="table table-bordered" id="myTable">
@@ -46,6 +46,41 @@
             </tbody>
     </table>
     </div>
+
+    <div class="container mt-3 text-center">
+        <h2>9*9 Table</h2>
+
+        <table class="table table-bordered" id="myTable2">
+            <!-- <thead> -->
+        <!-- <tr>
+            <th></th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+        </tr> -->
+            <!-- </thead> -->
+            <tbody>
+        <!-- <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr> -->
+            </tbody>
+    </table>
+    </div>
+
     <!-- js include 順序 1.bs 2.jq 3.self -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
         integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
@@ -53,14 +88,14 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-  
+
+        // 一、顯示算式
         $(document).ready(function () {
             // 1.bind
             const myTable = $('#myTable');
             const myTbody = myTable.find('tbody');
 
-            let a=1
-            let b=1
+            
 
             // 2.action
             for (let i = 1; i <= 9; i++) {
@@ -74,6 +109,36 @@
             }
         });
 
+
+
+        // 二、只顯示結果
+        const myTable = $('#myTable2');
+        const myTbody = myTable.find('tbody');
+
+        // 先生成表頭（列首）
+        let headerRow = `<tr><th></th>`;  // 頭部左上角留空
+        for (let i = 1; i <= 9; i++) {
+            headerRow += `<th>${i}</th>`;  // 添加1~9到表頭
+        }
+        headerRow += `</tr>`;
+        myTbody.append(headerRow); // 將表頭行加入表格
+
+        // 接著生成剩下的乘法表
+        for (let i = 1; i <= 9; i++) {
+            let row = `<tr>`;  // 開始生成每一行
+            
+            // 生成每行的行首
+            row += `<th>${i}</th>`;  // 行首顯示1~9
+            
+            // 生成每行的乘積結果
+            for (let j = 1; j <= 9; j++) {
+                let result = i * j; // 計算乘積
+                row += `<td>${result}</td>`; // 顯示結果
+            }
+        
+            row += `</tr>`;
+            myTbody.append(row); // 將這一行加入表格
+        }
     </script>
 
 

@@ -2,17 +2,6 @@
 <html lang="en">
 
 <head>
-    <style>
-        table{
-            width: 80%;
-            height: 80%;
-            margin: auto;
-        }
-        table tr,td{
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -24,7 +13,11 @@
 
 <body>
 
-    <table>
+    <div class="container mt-3">
+        <h2>Bordered Table</h2>
+        <p>The .table-bordered class adds borders on all sides of the table and the cells:</p>
+        <table class="table table-bordered" id="myTable">
+            <thead>
         <tr>
             <th>年份</th>
             <th>1</th>
@@ -38,114 +31,65 @@
             <th>9</th>
             <th>10</th>
         </tr>
-        <tr>
-            <td></td>
-            <td class="result1"></td>
-            <td class="result2"></td>
-            <td class="result3"></td>
-            <td class="result4"></td>
-            <td class="result5"></td>
-            <td class="result6"></td>
-            <td class="result7"></td>
-            <td class="result8"></td>
-            <td class="result9"></td>
-            <td class="result10"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td class="tdname">tdname</td>
+                    <td class="td1">td1</td>
+                    <td class="td2">td2</td>
+                    <td class="td3">td3</td>
+                    <td class="td4">td4</td>
+                    <td class="td5">td5</td>
+                    <td class="td6">td6</td>
+                    <td class="td7">td7</td>
+                    <td class="td8">td8</td>
+                    <td class="td9">td9</td>
+                    <td class="td10">td10</td>
+                </tr> -->
+            </tbody>
     </table>
+    </div>
+
     <!-- js include 順序 1.bs 2.jq 3.self -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
         integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-
-
-// let int=1.05
-// let money=10    
-// let result=money + money * int
-// console.log('int',int);
-// console.log('money',money);
-// console.log('money',result);
-    
-// $(".result2").text(result);
-// $(".result2").text(result);
-
-// function count(){
-    
-// }
 
 let originMoney = 10;
     let tmp = 0;
-    let rate = 1.05;
+        let rate = 1.08;
     let sum = 0;
-    for (let i = 1; i <= 10 ; i++) {
-        if(sum==0){
-            sum=originMoney;
+    let tmpObj = {};
+        for (let i = 1; i <= 10; i++) {
+            if (sum == 0) {
+                sum = originMoney;
         }
-        console.log(`o 第${i}年=>${sum}`);
-        sum =((sum)*rate).toFixed(2);
-        console.log(`c 第${i}年=>${sum}`);
-    }
+            console.log(`o 第${i}年 => ${sum}`);
+        tmpObj[i] = sum;
+
+            sum = Number(((sum) * rate).toFixed(2));
+
+
+            console.log(`c 第${i}年 => ${sum}`);
+
+        }
+        tmpObj['name'] = '第一年';
+
+
+        console.log('tmpObj', tmpObj);
+
+
+
 
 $(document).ready(function () {
-    
-    // 1.bind
-    let origin=10;
-    let rate=1.1;
-    let myArr=[
+            let origin = 10;
+            let rate = 1.1;
+            let myArr = [
                 {
                     name: 1,
                     1: origin,
@@ -175,8 +119,33 @@ $(document).ready(function () {
             ]
 });
 
-</script>
+        // jquery
+        // 1.bind
+        const myTable = $('#myTable');
+        const myTbody = myTable.find('tbody');
 
+        console.log('tmpObj', tmpObj);
+
+        // 2.action
+        let tmpText = `
+                <tr>
+                    <td class="tdname">${tmpObj['name']}</td>
+                    <td class="td1">${tmpObj[1]}</td>
+                    <td class="td2">${tmpObj[2]}</td>
+                    <td class="td3">${tmpObj[3]}</td>
+                    <td class="td4">${tmpObj[4]}</td>
+                    <td class="td5">${tmpObj[5]}</td>
+                    <td class="td6">${tmpObj[6]}</td>
+                    <td class="td7">${tmpObj[7]}</td>
+                    <td class="td8">${tmpObj[8]}</td>
+                    <td class="td9">${tmpObj[9]}</td>
+                    <td class="td10">${tmpObj[10]}</td>
+                </tr>
+        `;
+        myTbody.append(tmpText);
+
+
+</script>
 </body>
 
 </html>

@@ -27,7 +27,21 @@ let myObj={
     s3:'cat',
     sayHello:function(){
         console.log('hello');
-    }
+    },
+    call:function(data){
+        console.log(`call data is ${data}`);
+    },
+    helloThis:function(){
+        console.log('this',this);
+        console.log('this.s1',this.s1);
+    },
+    hello:function(s){
+        console.log('hello,',s);
+    },
+    helloS2:()=>{
+        console.log('this',this);
+        console.log('this.s2',this.s2);
+    },
 }
 let s2Var='s2'
 console.log('myObj',myObj);
@@ -36,7 +50,14 @@ console.log('myObj.s1',myObj.s1);
 console.log('myObj.[s2Var]',myObj[s2Var]);
 
 myObj.sayHello();
+myObj.call('kai hello');
+myObj.helloThis();
 
+myObj.hello(myObj.s1);
+myObj.hello(myObj[s2Var]);
+myObj.hello(myObj['s3']);
+
+myObj.helloS2();
 </script>
 
 </body>

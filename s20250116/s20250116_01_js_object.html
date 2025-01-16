@@ -49,14 +49,21 @@ console.log('myObj["s1"]',myObj["s1"]);
 console.log('myObj.s1',myObj.s1);
 console.log('myObj.[s2Var]',myObj[s2Var]);
 
+// 直接呼叫函式
 myObj.sayHello();
+
+// 帶入變數
 myObj.call('kai hello');
+
+// this會帶入整個物件
 myObj.helloThis();
 
+// 帶入屬性
 myObj.hello(myObj.s1);
 myObj.hello(myObj[s2Var]);
 myObj.hello(myObj['s3']);
 
+// 箭頭函式
 myObj.helloS2();
 </script>
 

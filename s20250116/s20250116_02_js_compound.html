@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        table{
+            width: 80%;
+            height: 80%;
+            margin: auto;
+        }
+        table tr,td{
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- link css 順序 1.bs 2.self -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <table>
+        <tr>
+            <th>年份</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="result1"></td>
+            <td class="result2"></td>
+            <td class="result3"></td>
+            <td class="result4"></td>
+            <td class="result5"></td>
+            <td class="result6"></td>
+            <td class="result7"></td>
+            <td class="result8"></td>
+            <td class="result9"></td>
+            <td class="result10"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <!-- js include 順序 1.bs 2.jq 3.self -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+
+// let int=1.05
+// let money=10    
+// let result=money + money * int
+// console.log('int',int);
+// console.log('money',money);
+// console.log('money',result);
+    
+// $(".result2").text(result);
+// $(".result2").text(result);
+
+// function count(){
+    
+// }
+
+let originMoney = 10;
+    let tmp = 0;
+    let rate = 1.05;
+    let sum = 0;
+    for (let i = 1; i <= 10 ; i++) {
+        if(sum==0){
+            sum=originMoney;
+        }
+        console.log(`o 第${i}年=>${sum}`);
+        sum =((sum)*rate).toFixed(2);
+        console.log(`c 第${i}年=>${sum}`);
+    }
+
+$(document).ready(function () {
+    
+    // 1.bind
+    let origin=10;
+    let rate=1.1;
+    let myArr=[
+                {
+                    name: 1,
+                    1: origin,
+                    2: tmp * rate,
+                    3: 11.66,
+                    4: 12.60,
+                    5: 13.60,
+                    6: 14.69,
+                    7: 15.87,
+                    8: 17.14,
+                    9: 18.51,
+                    10: 19.99
+                },
+                {
+                    name: 2,
+                    1: 0.00,
+                    2: 20.80,
+                    3: 22.46,
+                    4: 24.26,
+                    5: 26.20,
+                    6: 28.30,
+                    7: 30.56,
+                    8: 33.01,
+                    9: 35.65,
+                    10: 38.50
+                }
+            ]
+});
+
+</script>
+
+</body>
+
+</html>

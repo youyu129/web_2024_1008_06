@@ -25,7 +25,7 @@
             /* background-color: lightpink; */
             margin: auto;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
         }
 
         span {
@@ -36,6 +36,10 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
+        }
+
+        .score {
+            font-size: 48px;
         }
     </style>
 </head>
@@ -50,11 +54,11 @@
         <div class="row">
             <div class="col-2">
                 <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/0/03/National_Basketball_Association_logo.svg/1200px-National_Basketball_Association_logo.svg.png"
-                    alt="" class="img-fluid">
+                    alt="" class="img-fluid mt-5">
             </div>
             <div class="col-8">
                 <div class="box1">
-                    <div class="box3 text-end">
+                    <div class="box3 text-center mt-5">
                         <div>
                             <span>
                                 倒數計時<br>
@@ -62,21 +66,23 @@
                             </span>
                         </div>
                         <div>
-                            <span class="text-end me-5 mt-3 text-success">
+                            <span class="text-success">
                                 歷史最高分數<br>
                                 999
                             </span>
                         </div>
                     </div>
 
+                    <div class="mt-5">
+                        <span>分數<br></span>
+                        <span class="score">168</span>
+                    </div>
 
-                    <p>分數</p>
-                    <span>168</span>
                 </div>
             </div>
             <div class="col-2">
                 <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/0/03/National_Basketball_Association_logo.svg/1200px-National_Basketball_Association_logo.svg.png"
-                    alt="" class="img-fluid">
+                    alt="" class="img-fluid  mt-5">
             </div>
         </div>
 

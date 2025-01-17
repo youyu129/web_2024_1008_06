@@ -106,12 +106,21 @@
     <script>
         $(document).ready(function () {
             // 1.bind
-            const timer = $('#timer')
-            const highScore = $('#highScore')
             const nowScore = $('#nowScore')
+            const highScore = $('#highScore')
+            const timer = $('#timer')
             const startBtn = $('#startBtn')
             const shootBtn = $('#shootBtn')
             const resetBtn = $('#resetBtn')
+
+            let scoreVar = 0
+            let scoreHighVar = 0
+            let timeVar = 3
+
+            nowScore.text(scoreVar)
+            highScore.text(scoreHighVar)
+            timer.text(timeVar)
+
 
             // 2.action
             startBtn.click(function (e) {
@@ -120,6 +129,8 @@
 
             shootBtn.click(function (e) {
                 console.log('shootBtn ok');
+                scoreVar += 2
+                nowScore.text(scoreVar)
             })
 
             resetBtn.click(function (e) {

@@ -60,22 +60,22 @@
                 <div class="box1">
                     <div class="box3 text-center mt-5">
                         <div>
-                            <span>
-                                倒數計時<br>
-                                60
+
+                            倒數計時<br>
+                            <span id="timer">60
                             </span>
                         </div>
                         <div>
                             <span class="text-success">
-                                歷史最高分數<br>
-                                999
+                                歷史最高分數<br></span>
+                            <span id="highScore">999
                             </span>
                         </div>
                     </div>
 
                     <div class="mt-5">
                         <span>分數<br></span>
-                        <span class="score">168</span>
+                        <span id="nowScore" class="score">168</span>
                     </div>
 
                 </div>
@@ -90,9 +90,9 @@
 
     <div class="container text-center mt-5">
         <div class="box2">
-            <button type="button" class="btn btn-dark btn-lg">開&nbsp;&nbsp;始</button>
-            <button type="button" class="btn btn-dark btn-lg ms-5">投&nbsp;&nbsp;球</button>
-            <button type="button" class="btn btn-danger btn-lg ms-5">重&nbsp;&nbsp;置</button>
+            <button type="button" id="startBtn" class="btn btn-dark btn-lg">開&nbsp;&nbsp;始</button>
+            <button type="button" id="scoreBtn" class="btn btn-dark btn-lg ms-5">投&nbsp;&nbsp;球</button>
+            <button type="button" id="resetBtn" class="btn btn-danger btn-lg ms-5">重&nbsp;&nbsp;置</button>
         </div>
         <hr>
     </div>
@@ -106,11 +106,24 @@
     <script>
         $(document).ready(function () {
             // 1.bind
-            let shot = $('#shot')
+            const timer = $('#timer')
+            const highScore = $('#highScore')
+            const nowScore = $('#nowScore')
+            const startBtn = $('#startBtn')
+            const scoreBtn = $('#scoreBtn')
+            const resetBtn = $('#resetBtn')
 
             // 2.action
-            shop.on('click', function () {
+            startBtn.click(function (e) {
+                console.log('startBtn ok');
+            })
 
+            scoreBtn.click(function (e) {
+                console.log('scoreBtn ok');
+            })
+
+            resetBtn.click(function (e) {
+                console.log('resetBtn ok');
             })
 
         });

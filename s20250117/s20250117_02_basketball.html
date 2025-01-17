@@ -10,6 +10,10 @@
         integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         .box1 {
             width: 80%;
             height: 50vh;
@@ -17,6 +21,8 @@
             border: 5px solid black;
             border-radius: 10px;
             margin: auto;
+            background-image: url(https://sportsplanetmag-aws.hmgcdn.com/public/article/atl_20190325160556_138.jpg);
+
         }
 
         .box2 {
@@ -41,11 +47,47 @@
         .score {
             font-size: 48px;
         }
+
+        .highScore {
+            width: 40%;
+            height: 10vh;
+            /* border: 4px solid rgb(87, 158, 87); */
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(240, 250, 240, 0.5);
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+        }
+
+        .timer {
+            width: 40%;
+            height: 10vh;
+            /* border: 4px solid rgb(245, 199, 115); */
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(248, 236, 213, 0.5);
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+        }
+
+        .main {
+            width: 90%;
+            height: 25vh;
+            /* border: 4px solid rgb(143, 143, 247); */
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(220, 220, 248, 0.5);
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            margin: auto;
+            font-weight: bold;
+            text-align-last: left;
+            line-height: 25vh;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container text-center mt-3">
+    <div class="container text-center mt-3 header">
         <h2>投籃大賽</h2>
         <hr>
     </div>
@@ -58,14 +100,13 @@
             </div>
             <div class="col-8">
                 <div class="box1">
-                    <div class="box3 text-center mt-5">
-                        <div>
-
-                            倒數計時<br>
+                    <div class="box3 text-center mt-5 ">
+                        <div class="timer">
+                            <span>倒數計時<br></span>
                             <span id="timer">60
                             </span>
                         </div>
-                        <div>
+                        <div class="highScore">
                             <span class="text-success">
                                 歷史最高分數<br></span>
                             <span id="highScore">999
@@ -73,8 +114,8 @@
                         </div>
                     </div>
 
-                    <div class="mt-5">
-                        <span>分數<br></span>
+                    <div class="mt-5 main">
+                        <span class="ms-5">分數：&nbsp;&nbsp;</span>
                         <span id="nowScore" class="score">168</span>
                     </div>
 

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- link css 順序 1.bs 2.self -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box1 {
+            width: 80%;
+            height: 50vh;
+            /* background-color: lightblue; */
+            border: 5px solid black;
+            border-radius: 10px;
+            margin: auto;
+            background-image: url(https://sportsplanetmag-aws.hmgcdn.com/public/article/atl_20190325160556_138.jpg);
+        }
+
+        .box2 {
+            width: 80%;
+            /* height: 50vh; */
+            /* background-color: lightpink; */
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        span {
+            font-size: x-large;
+        }
+
+        .box3 {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .score {
+            font-size: 48px;
+        }
+
+        .highScore {
+            width: 40%;
+            height: 10vh;
+            /* border: 4px solid rgb(87, 158, 87); */
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(240, 250, 240, 0.5);
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+            text-shadow: -1px -1px 0 #efe4d1,
+                1px -1px 0 #efe4d1,
+                -1px 1px 0 #efe4d1,
+                1px 1px 0 #efe4d1;
+        }
+
+        .timer {
+            width: 40%;
+            height: 10vh;
+            /* border: 4px solid rgb(245, 199, 115); */
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(248, 236, 213, 0.5);
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            font-weight: bold;
+            text-shadow: -1px -1px 0 #efe4d1,
+                1px -1px 0 #efe4d1,
+                -1px 1px 0 #efe4d1,
+                1px 1px 0 #efe4d1;
+        }
+
+        .main {
+            width: 90%;
+            height: 25vh;
+            /* border: 4px solid rgb(143, 143, 247); */
+            border-radius: 10px;
+            padding: 10px;
+            background-color: rgba(220, 220, 248, 0.5);
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            margin: auto;
+            font-weight: bold;
+            text-align-last: left;
+            line-height: 25vh;
+            text-shadow: -1px -1px 0 #efe4d1,
+                1px -1px 0 #efe4d1,
+                -1px 1px 0 #efe4d1,
+                1px 1px 0 #efe4d1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center mt-3 header">
+        <h2>投籃大賽</h2>
+        <hr>
+    </div>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-2">
+                <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/0/03/National_Basketball_Association_logo.svg/1200px-National_Basketball_Association_logo.svg.png"
+                    alt="" class="img-fluid mt-5">
+            </div>
+            <div class="col-8">
+                <div class="box1">
+                    <div class="box3 text-center mt-5 ">
+                        <div class="timer">
+                            <span>倒數計時<br></span>
+                            <span id="timer">60
+                            </span>
+                        </div>
+                        <div class="highScore">
+                            <span class="text-success">
+                                歷史最高分數<br></span>
+                            <span id="highScore">999
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 main">
+                        <span class="ms-5">分數：&nbsp;&nbsp;</span>
+                        <span id="nowScore" class="score">168</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-2">
+                <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/0/03/National_Basketball_Association_logo.svg/1200px-National_Basketball_Association_logo.svg.png"
+                    alt="" class="img-fluid  mt-5">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container text-center mt-5">
+        <div class="box2">
+            <button type="button" id="startBtn" class="btn btn-dark btn-lg">開&nbsp;&nbsp;始</button>
+            <button type="button" id="shootBtn" class="btn btn-dark btn-lg">投&nbsp;&nbsp;球</button>
+            <button type="button" id="resetBtn" class="btn btn-danger btn-lg">重&nbsp;&nbsp;置</button>
+        </div>
+        <hr>
+    </div>
+
+    <!-- js include 順序 1.bs 2.jq 3.self -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 1.bind
+            const nowScore = $('#nowScore')
+            const highScore = $('#highScore')
+            const timer = $('#timer')
+            const startBtn = $('#startBtn')
+            const shootBtn = $('#shootBtn')
+            const resetBtn = $('#resetBtn')
+
+            let scoreVar = 0
+            let scoreHighVar = 0
+            let timeVar = 20
+            let gameFlag = true
+            let tmpTime = 0
+
+            nowScore.text(scoreVar)
+            highScore.text(scoreHighVar)
+            timer.text(timeVar)
+
+            shootBtn.hide()
+
+            // 2.action
+            startBtn.click(function (e) {
+                if (gameFlag == false) {
+                    console.log('gameFlag false', gameFlag);
+                    return false
+                }
+                startBtn.hide()
+                shootBtn.show()
+                console.log('startBtn ok');
+
+                // timer -1/sec
+                const myInterval = setInterval(myTimer, 1000);
+                tmpTime = timeVar
+                function myTimer() {
+                    tmpTime = tmpTime - 1
+                    if (tmpTime < 0) {
+                        gameFlag = false
+                        clearInterval(myInterval)
+                        startBtn.show()
+                        shootBtn.hide()
+                    } else {
+                        timer.text(tmpTime)
+                    }
+                }
+                function myStop() {
+                    clearInterval(myInterval)
+                }
+            })
+
+            shootBtn.click(function (e) {
+                if (gameFlag == false) {
+                    console.log('gameFlag false', gameFlag);
+                    return false
+                }
+                console.log('tmpTime', tmpTime);
+                // 三分球 0-10秒
+                if (tmpTime <= 10) {
+                    scoreVar += 3
+                } else {
+                    // 兩分球 10-20秒
+                    scoreVar += 2
+                }
+
+
+
+                nowScore.text(scoreVar)
+            });
+
+            resetBtn.click(function (e) {
+                console.log('resetBtn ok');
+            })
+
+        });
+    </script>
+
+
+</body>
+
+</html>

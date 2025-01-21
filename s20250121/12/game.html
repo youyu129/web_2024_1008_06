@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ 投籃小遊戲 - 倒數計時版</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #d0eefa;
+        }
+
+        #game-container {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background-image: url("./img/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlMTFfM2RfcmVuZGVyX2NhcnRvb25fc3R5bGVfb2ZfYV9iYXNrZXRiYWxsX2NvdXJ0X181NWU0NDA2My1mMmU2LTQ2MGItOWQ0Mi00ZTZiNDM1NjhlY2FfMS5qcGc.webp");
+            background-color: #fff;
+            border: 2px solid #b1b0b0;
+            border-radius: 15px;
+            margin-top: 40px;
+            background-position: 50.8% 10px;
+        }
+
+        .button-area {
+            position: absolute;
+            bottom: 0px;
+            background: rgba(0, 0, 0, 0.8);
+            width: 400px;
+            height: 100px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        #timer,
+        #score-display,
+        #high-score {
+            font-size: 20px;
+            text-align: center;
+            color: rgb(5, 70, 90);
+        }
+
+        #basket {
+            position: absolute;
+            top: 80px;
+            left: 150px;
+            width: 100px;
+            height: 46px;
+            background-color: rgba(142, 184, 197, 0);
+            border-radius: 10px;
+        }
+
+        #result-message {
+            position: absolute;
+            top: 15px;
+            /* 籃框下方 */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-family: '微軟正黑體';
+            font-weight: 600;
+            color: #f77f0f;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(192, 121, 63, 0.8);
+            border-radius: 5px;
+            width: 120px;
+            height: 26px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #ball {
+            position: absolute;
+            bottom: 150px;
+            left: 180px;
+            width: 40px;
+            height: 40px;
+            background-image: url("./img/vector-realistic-3d-orange-brown-600nw-1149888836.webp");
+            background-size: 70px 70px;
+            background-position: 50% 50%;
+            background-color: orange;
+            border-radius: 50%;
+        }
+
+        #aim-bar {
+            position: absolute;
+            bottom: 130px;
+            left: 50px;
+            width: 300px;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #aim-indicator {
+            position: absolute;
+            left: 0;
+            width: 30px;
+            height: 10px;
+            background-color: green;
+            transition: left 0.1s;
+        }
+
+        #start-btn,
+        #shoot-btn,
+        #reset-btn {
+            position: absolute;
+            bottom: 20px;
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: rgb(255, 196, 148);
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        #start-btn {
+            left: 10%;
+            transform: translateX(-50%);
+        }
+
+        #shoot-btn {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #reset-btn {
+            left: 88%;
+            bottom: 10%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div id="timer">倒數計時: <span id="timer-value">60</span></div>
+        <div id="score-display">分數: <span id="score-value">0</span></div>
+        <div id="high-score">最高分數: <span id="high-score-value">0</span></div>
+    </div>
+    <div id="game-container">
+        <div id="basket"></div>
+        <div id="result-message"></div>
+        <div id="ball"></div>
+        <div id="aim-bar">
+            <div id="aim-indicator"></div>
+        </div>
+        <div class="button-area">
+            <button id="start-btn">開始</button>
+            <button id="shoot-btn" disabled>投籃!</button>
+            <button id="reset-btn" disabled>重置</button>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 綁定 DOM 元素
+            const nowScore = $("#score-value");
+            const highScore = $("#high-score-value");
+            const timer = $("#timer-value");
+            const startBtn = $("#start-btn");
+            const shootBtn = $("#shoot-btn");
+            const resetBtn = $("#reset-btn");
+            const resultMessage = $("#result-message");
+            const ball = $("#ball");
+            const aimIndicator = $("#aim-indicator");
+
+            // 遊戲狀態變數
+            let score = 0;
+            let highScoreVar = parseInt(localStorage.getItem("highScore")) || 0; // 載入最高分數
+            let aimPosition = 0;
+            let gameStarted = false;
+            let timeLeft = 60;
+            let timerInterval, aimInterval;
+
+            // 更新 UI
+            nowScore.text(score);
+            highScore.text(highScoreVar);
+            timer.text(timeLeft);
+
+            // 瞄準條移動
+            function startAimIndicator() {
+                let direction = 1;
+                aimInterval = setInterval(function () {
+                    aimPosition += 5 * direction;
+                    const aimBarWidth = $("#aim-bar").width();
+                    const aimBarOffset = $("#aim-bar").offset().left;
+                    const gameContainerOffset = $("#game-container").offset().left;
+
+                    // 確保瞄準點不超出範圍
+                    if (aimPosition > aimBarWidth - 30) {
+                        direction = -1;
+                        aimPosition = aimBarWidth - 30;
+                    } else if (aimPosition < 0) {
+                        direction = 1;
+                        aimPosition = 0;
+                    }
+
+                    // 更新瞄準點位置
+                    aimIndicator.css("left", aimPosition + "px");
+
+                    // 同步球的位置
+                    const ballLeft = aimPosition + aimBarOffset - gameContainerOffset;
+                    ball.css("left", ballLeft + "px");
+                }, 20);
+            }
+
+            function stopAimIndicator() {
+                clearInterval(aimInterval);
+            }
+
+            // 倒數計時
+            function startTimer() {
+                timerInterval = setInterval(function () {
+                    timeLeft--;
+                    timer.text(timeLeft);
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        stopAimIndicator();
+                        gameStarted = false;
+                        shootBtn.prop("disabled", true);
+                        resultMessage.text(`時間到！總分 ${score} 分`).css("font-size", "13px");
+
+                        // 更新最高分數
+                        if (score > highScoreVar) {
+                            highScoreVar = score;
+                            localStorage.setItem("highScore", highScoreVar);
+                            highScore.text(highScoreVar);
+                        }
+                    }
+                }, 1000);
+            }
+
+            // 開始按鈕
+            startBtn.click(function () {
+                gameStarted = true;
+                score = 0;
+                timeLeft = 60;
+                nowScore.text(score);
+                timer.text(timeLeft);
+                resultMessage.text("");
+                shootBtn.prop("disabled", false);
+                resetBtn.prop("disabled", false);
+                startBtn.prop("disabled", true);
+
+                startAimIndicator();
+                startTimer();
+            });
+
+            // 投籃按鈕
+            shootBtn.click(function () {
+                if (!gameStarted) return;
+
+                const aimLeft = aimIndicator.offset().left;
+                const ballStartLeft = aimLeft - $("#game-container").offset().left;
+                const basketLeft = $("#basket").offset().left;
+                const basketRight = basketLeft + $("#basket").width();
+                const basketTop = $("#basket").offset().top;
+                const basketBottom = basketTop + $("#basket").height();
+
+                let rotation = 0; // 初始旋轉角度
+
+                // 記錄球的起始位置
+                const initialBallPosition = { top: "400px", left: "180px" };
+
+                ball.stop(true, true).css({
+                    left: ballStartLeft + "px",
+                    transform: "rotate(0deg)" // 重置旋轉角度
+                });
+
+                // 設定旋轉動畫
+                const rotateInterval = setInterval(function () {
+                    rotation += 13; // 每次增加的旋轉角度
+                    ball.css("transform", `rotate(${rotation}deg)`);
+                }, 50); // 每 50 毫秒更新一次
+
+                ball.animate(
+                    { top: basketTop - 150 },
+                    400,
+                    function () {
+                        const ballLeft = ball.offset().left;
+                        if (
+                            ballLeft >= basketLeft &&
+                            ballLeft + ball.width() <= basketRight
+                        ) {
+                            const points = timeLeft >= 30 ? 2 : 3;
+                            score += points;
+                            nowScore.text(score);
+                            resultMessage.text(`進球！得 ${points} 分`).css("color", "lightblue");
+
+                            ball.animate(
+                                { top: basketBottom + 20 },
+                                200,
+                                function () {
+                                    ball.css({
+                                        top: initialBallPosition.top,
+                                        left: initialBallPosition.left,
+                                        transform: "rotate(0deg)"
+                                    });
+                                    clearInterval(rotateInterval); // 停止旋轉動畫
+                                }
+                            );
+                        } else {
+                            resultMessage.text("沒進！").css("color", "orange");
+
+                            ball.animate(
+                                { top: "400px" },
+                                300,
+                                function () {
+                                    ball.css({
+                                        top: initialBallPosition.top,
+                                        left: initialBallPosition.left,
+                                        transform: "rotate(0deg)"
+                                    });
+                                    clearInterval(rotateInterval); // 停止旋轉動畫
+                                }
+                            );
+                        }
+                    }
+                );
+            });
+
+            // 重置按鈕
+            resetBtn.click(function () {
+                score = 0;
+                nowScore.text(score);
+                resultMessage.text("");
+                ball.css({ top: "", left: "180px" });
+                clearInterval(timerInterval);
+                stopAimIndicator();
+                gameStarted = false;
+                shootBtn.prop("disabled", true);
+                resetBtn.prop("disabled", true);
+                startBtn.prop("disabled", false);
+                timer.text(60);
+                aimPosition = 0;
+                aimIndicator.css("left", aimPosition + "px");
+            });
+        });
+
+    </script>

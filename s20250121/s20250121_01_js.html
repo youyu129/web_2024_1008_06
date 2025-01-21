@@ -16,7 +16,7 @@
 
         .box1 {
             width: 80%;
-            height: 50vh;
+            height: 48vh;
             /* background-color: lightblue; */
             border: 5px solid black;
             border-radius: 10px;
@@ -212,6 +212,7 @@
                     return false
                 }
                 console.log('tmpTime', tmpTime);
+
                 // 三分球 0-10秒
                 if (tmpTime <= 10) {
                     scoreVar += 3
@@ -220,13 +221,35 @@
                     scoreVar += 2
                 }
 
-
-
                 nowScore.text(scoreVar)
             });
 
             resetBtn.click(function (e) {
                 console.log('resetBtn ok');
+                // 倒數計時回到 20秒
+                // 分數回到 0
+                // 重設gameFlag
+                // 按鈕恢復為開始
+
+                // 倒數計時回到 20秒
+                timeVar = 20
+                tmpTime = 0
+                timer.text(timeVar)
+                console.log('timeVar', timeVar);
+                console.log('tmpTime', tmpTime);
+
+
+                // 分數回到 0
+                scoreVar = 0
+                nowScore.text(scoreVar)
+
+                // 重設gameFlag
+                gameFlag = true
+                console.log('gameFlag', gameFlag);
+
+                // 按鈕恢復為開始
+                shootBtn.hide()
+                startBtn.show()
             })
 
         });

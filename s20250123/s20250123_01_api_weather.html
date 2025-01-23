@@ -20,7 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            let url = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-85853216-8020-480E-8E32-F5D054D589E5'
+            let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pw}`
 
             $.ajax({
                 type: "get",
@@ -29,6 +29,12 @@
                 dataType: "Json",
                 success: function (res) {
                     console.log('res', res);
+                    let data = res.records.location[1]
+                    console.log('data', data);
+                    let dataTaitung = res.records.location[12]
+                    console.log('dataTaitung', dataTaitung);
+
+
                 }
             })
         });

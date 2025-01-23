@@ -12,6 +12,24 @@
 </head>
 
 <body>
+    <div class="container mt-3">
+        <h1>縣市</h1>
+        <table class="table table-hover" id="myTable">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>縣市</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>1</td>
+                    <td>新北市</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
     <!-- js include 順序 1.bs 2.jq 3.self -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
         integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
@@ -27,6 +45,10 @@
 
             let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`
 
+            // 1. bind
+            const myTable = $("#myTable")
+            const myTbody = myTable.find('tbody')
+
             $.ajax({
                 type: "get",
                 url: url,
@@ -34,8 +56,28 @@
                 dataType: "Json",
                 success: function (res) {
                     console.log('res', res);
-                    let data = res.records.location[1].locationName
+                    let data = res.records.location
                     console.log('data', data);
+
+                    $.each(data, function (key, value) {
+                        // 1.抓出縣市名
+                        console.log('key', key);
+                        console.log('value', value);
+                        console.log('value', value.locationName);
+
+                        let tmpLocationName = value.locationName
+                        console.log('tmpLocationName', tmpLocationName);
+                        let tmpLocationId = key
+
+                        // 2.table顯示地名
+                        let tmpText = `
+                                    <tr>
+                                        <td>${tmpLocationId}</td>
+                                        <td>${tmpLocationName}</td>
+                                    </tr>
+                        `
+                        $(myTbody).append(tmpText)
+                    })
                 }
             })
         });

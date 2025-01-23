@@ -18,9 +18,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../youyu/pw.js">
+    </script>
     <script>
         $(document).ready(function () {
-            let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pw}`
+            let pwd = pw
+            console.log('pwd', pwd)
+
+            let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${pwd}`
 
             $.ajax({
                 type: "get",
@@ -33,8 +38,6 @@
                     console.log('data', data);
                     let dataTaitung = res.records.location[12]
                     console.log('dataTaitung', dataTaitung);
-
-
                 }
             })
         });

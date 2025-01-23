@@ -13,31 +13,35 @@
 
 <body>
     <div class="container mt-3">
-        <h1>天氣</h1>
+        <h1>縣市</h1>
         <table class="table table-hover" id="myTable">
             <thead>
                 <tr>
-
+                    <th>id</th>
+                    <th>縣市</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-008.jpg" alt=""> -->
-
+                <!-- <tr>
+                    <td>1</td>
+                    <td>新北市</td>
+                </tr> -->
             </tbody>
         </table>
     </div>
+
     <!-- js include 順序 1.bs 2.jq 3.self -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
         integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../youyu/pw.js">
-    </script>
+    <img src="http://localhost/php/s20250123/php/data.php" alt="">
+
     <script>
         $(document).ready(function () {
 
-            let url = `./data/weather.json`
+            let url = `http://localhost/php/s20250123/php/data_public.php`
 
             // 1. bind
             const myTable = $("#myTable")
@@ -50,24 +54,20 @@
                 dataType: "Json",
                 success: function (res) {
                     console.log('res', res);
-                    let data = res.cwaopendata.dataset.Resource
+                    let data = res
                     console.log('data', data);
-                    $.each(res, function (key, value) {
-                        // 1.抓出
+
+                    $.each(data, function (key, value) {
 
                         console.log('key', key);
                         console.log('value', value);
-                        let tmpText = `<tr>
-                                        <td></td>
-                                        
-                                    </tr>`
-                        let img = `<img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-008.jpg" alt="">`
-                        myTbody.append(img)
                     })
                 }
             })
         });
     </script>
+
+
 </body>
 
 </html>

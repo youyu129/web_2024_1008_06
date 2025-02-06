@@ -129,20 +129,54 @@
                         let tmpMaxTtime0 = tmpWeatherElement[4].time[0].parameter['parameterName']
                         let tmpMaxTtime1 = tmpWeatherElement[4].time[0].parameter['parameterName']
                         let tmpMaxTtime2 = tmpWeatherElement[4].time[0].parameter['parameterName']
+                        // wx 
+                        let tmpWx0 = tmpWeatherElement[0].time[0].parameter['parameterValue']
+                        let tmpWx1 = tmpWeatherElement[0].time[1].parameter['parameterValue']
+                        let tmpWx2 = tmpWeatherElement[0].time[2].parameter['parameterValue']
+
+                        // 1. 先寫註解
+                        // tmpStartText 06 day
+                        // tmpEndText 18 night
+
+                        // 2. 設定直覺的變數 直接用結果寫
+                        // let tmpTimeType1 = 'day'
+                        // let tmpTimeType2 = 'night'
+                        // let tmpTimeType3 = 'day'
+
+                        // 3. 寫直覺簡單的判斷式
+                        // if () {
+                        //     tmpTimeType1 = 'day'
+                        // } else {
+                        //     tmpTimeType1 = 'night'
+                        // }
+
+                        // if (tmpStartText2 == '06') {
+                        //     tmpTimeType2 = 'day'
+                        // } else {
+                        //     tmpTimeType2 = 'night'
+                        // }
+                        // if (tmpStartText3 == '06') {
+                        //     tmpTimeType3 = 'day'
+                        // } else {
+                        //     tmpTimeType3 = 'night'
+                        // }
+
+                        // 4. 重構優化
+                        tmpTimeType1 = (tmpStartText1 == '06') ? 'day' : 'night';
+                        tmpTimeType2 = (tmpStartText2 == '06') ? 'day' : 'night';
+                        tmpTimeType3 = (tmpStartText3 == '06') ? 'day' : 'night';
 
                         // 2.table顯示地名
                         let tmpText = `
                             <tr>
                                 <td>${tmpLocationId}</td>
                                 <td>${tmpLocationName}</td>
-                                <td>${tmpMinTtime0}~${tmpMaxTtime0}度</td>
-                                <td>${tmpMinTtime1}~${tmpMaxTtime1}度</td>
-                                <td>${tmpMinTtime2}~${tmpMaxTtime2}度</td>
+                                <td>${tmpMinTtime0}~${tmpMaxTtime0}度 <img src="./${tmpTimeType1}/${tmpWx0}.svg" alt=""></td>
+                                <td>${tmpMinTtime1}~${tmpMaxTtime1}度 <img src="./${tmpTimeType2}/${tmpWx0}.svg" alt=""></td>
+                                <td>${tmpMinTtime2}~${tmpMaxTtime2}度 <img src="./${tmpTimeType3}/${tmpWx0}.svg" alt=""></td>
                                 </tr>
                                 `
                         $(myTbody).append(tmpText)
-
-
                     })
 
                 }

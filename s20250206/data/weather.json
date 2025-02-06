@@ -1,0 +1,25 @@
+{
+ "cwaopendata": {
+  "@xmlns": "urn:cwa:gov:tw:cwacommon:0.1",
+  "identifier": "bc7ef780-d97c-4404-bc40-ce55abcea082",
+  "sender": "od@cwa.gov.tw",
+  "sent": "2025-01-23T11:37:10+08:00",
+  "status": "Actual",
+  "msgType": "Issue",
+  "dataid": "O-C0042-008",
+  "scope": "Public",
+  "dataset": {
+   "GeoInfo": {
+    "LongitudeRange": "115.976888855-126.02300114",
+    "LatitudeRange": "19.100625745-28.29937425"
+   },
+   "ObsTime": {
+    "Datetime": "2025-01-23T11:20:00+08:00"
+   },
+   "Resource": {
+    "ResourceDesc": "高解析台灣可見光衛星雲圖",
+    "ProductURL": "https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-008.jpg"
+   }
+  }
+ }
+}

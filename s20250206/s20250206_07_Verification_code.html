@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .captcha-box {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .captcha-display {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #refresh-captcha {
+            margin-top: 10px;
+            background-color: #007BFF;
+            font-size: 14px;
+        }
+
+        #refresh-captcha:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="submit"] {
+            margin-top: 15px;
+            background-color: #007BFF;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>登入</h2>
+        <form id="loginForm">
+            <label for="captcha">驗證碼:</label>
+            <div class="captcha-box">
+                <input type="text" id="captcha" placeholder="請輸入驗證碼" required>
+                <div id="captcha-display" class="captcha-display"></div>
+            </div>
+            <button type="button" id="refresh-captcha">換一組驗證碼</button>
+            <button type="submit">登入</button>
+        </form>
+    </div>
+
+    <!-- js include 順序 1.bs 2.jq 3.self -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+
+    <script>
+        // 生成 4 位數字的驗證碼
+        function generateCaptcha() {
+            const captcha = Math.floor(1000 + Math.random() * 9000);  // 生成 1000 到 9999 之間的數字
+            const captchaText = captcha.toString();
+            const captchaElement = document.getElementById('captcha-display');
+
+            // 設置驗證碼顯示
+            captchaElement.textContent = captchaText;
+
+            // 隨機更換背景效果
+            setRandomBackground(captchaElement);
+
+            // 記錄未遮蔽的原始驗證碼
+            captchaElement.setAttribute('data-captcha', captchaText);
+
+            return captchaText;
+        }
+
+        function setRandomBackground(element) {
+            // 隨機顏色背景
+            const randomColor = `hsl(${Math.random() * 360}, 70%, 80%)`;
+            element.style.backgroundColor = randomColor;
+
+            // 創建隨機圓點背景
+            const dotsCount = 10 + Math.floor(Math.random() * 10);  // 隨機生成 10 到 20 顆圓點
+            let dots = '';
+
+            for (let i = 0; i < dotsCount; i++) {
+                const top = Math.floor(Math.random() * 100);
+                const left = Math.floor(Math.random() * 100);
+                const size = Math.floor(Math.random() * 6) + 2;  // 隨機圓點大小
+
+                dots += `
+      .dot-${i} {
+        position: absolute;
+        top: ${top}%;
+        left: ${left}%;
+        width: ${size}px;
+        height: ${size}px;
+        background-color: rgba(0, 0, 0, 0.15);
+        border-radius: 50%;
+      }
+    `;
+            }
+
+            // 動態插入點狀背景的 CSS
+            const styleSheet = document.createElement("style");
+            styleSheet.type = "text/css";
+            styleSheet.innerText = dots;
+            document.head.appendChild(styleSheet);
+
+            // 創建隨機線條背景
+            const linesCount = 5 + Math.floor(Math.random() * 5);  // 隨機生成 5 到 10 條線
+            let lines = '';
+
+            for (let i = 0; i < linesCount; i++) {
+                const angle = Math.floor(Math.random() * 360); // 隨機角度
+                const length = Math.floor(Math.random() * 80) + 50; // 隨機線長度
+                const top = Math.floor(Math.random() * 100); // 隨機頂部位置
+                const left = Math.floor(Math.random() * 100); // 隨機左側位置
+
+                // 隨機顏色
+                const color = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.2)`;
+
+                lines += `linear-gradient(${angle}deg, ${color}, transparent ${length}px), `;
+            }
+
+            // 添加隨機線條背景
+            element.style.backgroundImage = lines.slice(0, -2); // 去掉最後一個多餘的逗號
+        }
+
+
+        // 刷新驗證碼
+        document.getElementById('refresh-captcha').addEventListener('click', function () {
+            generateCaptcha();
+        });
+
+        // 驗證表單提交
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();  // 防止頁面刷新
+            const enteredCaptcha = document.getElementById('captcha').value;
+            const displayedCaptcha = document.getElementById('captcha-display').getAttribute('data-captcha');
+
+            if (enteredCaptcha === displayedCaptcha) {
+                alert('驗證碼正確，登入成功！');
+            } else {
+                alert('驗證碼錯誤，請重新輸入！');
+                document.getElementById('captcha').value = '';  // 清空輸入框
+                generateCaptcha();  // 重新生成驗證碼
+            }
+        });
+
+        // 初始生成一個驗證碼
+        generateCaptcha();
+
+
+    </script>
+</body>
+
+</html>

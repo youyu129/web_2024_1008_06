@@ -89,7 +89,12 @@
                                     </tr>`
                         myTbody.append(data)
                     })
-                    $("#myTable").DataTable();
+                    $("#myTable").DataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Chinese-traditional.json"
+                        }
+                    });
+
                 }
             })
         });

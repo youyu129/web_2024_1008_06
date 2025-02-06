@@ -22,6 +22,9 @@
                 <tr>
                     <th class="text-center">id</th>
                     <th class="text-center">縣市</th>
+                    <th id="time1"></th>
+                    <th id="time2"></th>
+                    <th id="time3"></th>
                 </tr>
             </thead>
             <tbody>
@@ -66,6 +69,46 @@
                     let data = res.records.location
                     // console.log('data', data);
 
+                    // time1
+                    let startTime1 = data[0].weatherElement[2].time[0].startTime
+                    let endTime1 = data[0].weatherElement[2].time[0].endTime
+                    console.log('startTime1', startTime1);
+                    console.log('endTime1', endTime1);
+                    // time2
+                    let startTime2 = data[0].weatherElement[2].time[1].startTime
+                    let endTime2 = data[0].weatherElement[2].time[1].endTime
+                    console.log('startTime2', startTime2);
+                    console.log('endTime2', endTime2);
+                    // time3
+                    let startTime3 = data[0].weatherElement[2].time[2].startTime
+                    let endTime3 = data[0].weatherElement[2].time[2].endTime
+                    console.log('startTime3', startTime3);
+                    console.log('endTime3', endTime3);
+
+
+                    // 2025-02-04 06:00:00
+                    let tmpDate1 = startTime1.substr(0, 10)
+                    let tmpStartText1 = startTime1.substr(11, 2)
+                    let tmpEndText1 = endTime1.substr(11, 2)
+
+                    let tmpDate2 = startTime2.substr(0, 10)
+                    let tmpStartText2 = startTime2.substr(11, 2)
+                    let tmpEndText2 = endTime2.substr(11, 2)
+
+                    let tmpDate3 = startTime3.substr(0, 10)
+                    let tmpStartText3 = startTime3.substr(11, 2)
+                    let tmpEndText3 = endTime3.substr(11, 2)
+
+                    let textTime1 = `${tmpDate1}[${tmpStartText1}~${tmpEndText1}]`
+                    console.log('textTime1', textTime1);
+                    let textTime2 = `${tmpDate2}[${tmpStartText2}~${tmpEndText2}]`
+                    console.log('textTime2', textTime2);
+                    let textTime3 = `${tmpDate3}[${tmpStartText3}~${tmpEndText3}]`
+                    console.log('textTime3', textTime3);
+
+                    $("#time1").append(textTime1)
+                    $("#time2").append(textTime2)
+                    $("#time3").append(textTime3)
 
 
                     $.each(data, function (key, value) {
@@ -73,12 +116,33 @@
                         let tmpLocationName = value.locationName
                         // console.log('tmpLocationName', tmpLocationName);
                         let tmpLocationId = key
+                        let tmpWeatherElement = value.weatherElement
+                        // minT
+                        let tmpMinTtime0 = tmpWeatherElement[2].time[0].parameter['parameterName']
+                        let tmpMinTtime1 = tmpWeatherElement[2].time[0].parameter['parameterName']
+                        let tmpMinTtime2 = tmpWeatherElement[2].time[0].parameter['parameterName']
+                        // maxT
+                        let tmpMaxTtime0 = tmpWeatherElement[4].time[0].parameter['parameterName']
+                        let tmpMaxTtime1 = tmpWeatherElement[4].time[0].parameter['parameterName']
+                        let tmpMaxTtime2 = tmpWeatherElement[4].time[0].parameter['parameterName']
+                        // wx 
+                        let tmpWx0 = tmpWeatherElement[0].time[0].parameter['parameterValue']
+                        let tmpWx1 = tmpWeatherElement[0].time[1].parameter['parameterValue']
+                        let tmpWx2 = tmpWeatherElement[0].time[2].parameter['parameterValue']
+
+                        tmpTimeType1 = (tmpStartText1 == '06') ? 'day' : 'night';
+                        tmpTimeType2 = (tmpStartText2 == '06') ? 'day' : 'night';
+                        tmpTimeType3 = (tmpStartText3 == '06') ? 'day' : 'night';
 
                         // 2.table顯示地名
                         let tmpText = `
                             <tr>
                                 <td>${tmpLocationId}</td>
                                 <td>${tmpLocationName}</td>
+                                <td>${tmpMinTtime0}~${tmpMaxTtime0}度 <img src="./${tmpTimeType1}/${tmpWx0}.svg" alt=""></td>
+                                <td>${tmpMinTtime1}~${tmpMaxTtime1}度 <img src="./${tmpTimeType2}/${tmpWx0}.svg" alt=""></td>
+                                <td>${tmpMinTtime2}~${tmpMaxTtime2}度 <img src="./${tmpTimeType3}/${tmpWx0}.svg" alt=""></td>
+                                </tr>
                                 `
                         $(myTbody).append(tmpText)
                     })

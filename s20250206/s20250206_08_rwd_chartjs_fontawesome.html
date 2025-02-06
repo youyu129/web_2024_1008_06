@@ -205,6 +205,20 @@
             display: none;
             /* 預設不顯示 */
         }
+
+        .why {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .whyBox {
+            background-color: #faf8f5;
+            border-radius: 8px;
+            margin: 0 2px;
+            padding: 20px;
+            box-shadow: 2px 2px 2px rgba(211, 209, 205, 0.5);
+        }
     </style>
 </head>
 
@@ -315,19 +329,19 @@
             <div class="" id="">
                 <h2 class="fw-bold text-center">為何選用Woodenfloor</h2>
                 <hr class="mx-auto" style="width: 15%; border-top: 2px solid #999;">
-                <div class="row">
-                    <div class="col-sm-4 text-center mb-4 mt-5">
+                <div class="row why">
+                    <div class="col-sm-3 text-center mb-4 mt-5 whyBox">
                         <p class="mb-5 fw-bold fs-4">Woodenfloor原料純粹自然，獨家天然塗層技術</p>
                         <img src="https://www.haroflooring.com.tw/wp-content/uploads/laminate-100-square.jpg" alt=""
                             class="img-fluid">
                     </div>
-                    <div class="col-sm-4 text-center mb-4 mt-5"><canvas id="ecoChart" width="400" height="400"></canvas>
+                    <div class="col-sm-3 text-center mb-4 mt-5 whyBox">
                         <p class="mb-5 fw-bold fs-4">採用可持續林業的 PEFC 認證木材</p>
                         <img src="https://www.mingjyun.com.tw/cdn/shop/articles/PEFC.jpg?v=1590737489" alt=""
                             class="img-fluid">
 
                     </div>
-                    <div class="col-sm-4 text-center mb-4 mt-5">
+                    <div class="col-sm-3 text-center mb-4 mt-5 whyBox">
                         <p class="mb-5 fw-bold fs-4">擁有國際認證建康環保標章共12個</p>
                         <img src="https://www.kronotex.com.tw/USER/Userfile/file/ff240223114538417672.png" alt=""
                             class="img-fluid">
@@ -337,6 +351,22 @@
 
             </div>
         </div>
+        <!-- <hr class="featurette-divider"> -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 whyBox mx-auto text-center">
+                    <h2 class="fw-bold">木地板環保特性比較</h2>
+                    <canvas id="ecoChart"></canvas>
+                </div>
+                <div class="col-sm-5 text-center mx-auto whyBox">
+                    <h2 class="fw-bold">木地板種類市場分佈</h2>
+                    <canvas id="floorChart"></canvas>
+                </div>
+
+            </div>
+        </div>
+        <br>
         <hr class="featurette-divider">
         <!-- 品牌故事 story -->
         <div class="vh-75 mt-5 mb-5 mt-5">
@@ -936,25 +966,39 @@
         var ecoChart = new Chart(ctx, {
             type: 'radar', // 使用雷達圖
             data: {
-                labels: ['可再生資源', '環保認證', '碳足跡計算', '低揮發性有機化合物', '環保材料'], // 環保指標
+                labels: ['可再生資源', '環保認證', '碳足跡計算', '低揮發性有機化合物', '材料回收利用'], // 環保指標
                 datasets: [{
-                    label: '實木地板',
-                    data: [85, 90, 60, 75, 80], // 實木地板在各指標的得分
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // 填充顏色
-                    borderColor: 'rgba(75, 192, 192, 1)', // 邊框顏色
-                    borderWidth: 1
-                }, {
                     label: '超耐磨地板',
-                    data: [70, 80, 50, 85, 70], // 超耐磨地板在各指標的得分
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)', // 填充顏色
-                    borderColor: 'rgba(153, 102, 255, 1)', // 邊框顏色
-                    borderWidth: 1
+                    data: [80, 90, 85, 95, 90], // 超耐磨地板在各指標的得分
+                    backgroundColor: 'rgba(217, 174, 171, 0.3)', // 奶油色（超耐磨木地板）
+                    borderColor: 'rgba(175, 132, 129, 1)', // 深奶油色邊框
+                    borderWidth: 1,
+                    hoverBorderColor: 'rgba(175, 132, 129, 1)', // 滑鼠懸停時的邊框顏色
+                    hoverBackgroundColor: 'rgba(175, 132, 129, 0.3)', // 滑鼠懸停時的背景顏色
+                }, {
+                    label: '實木地板',
+                    data: [75, 85, 70, 65, 80], // 實木地板在各指標的得分
+                    backgroundColor: 'rgba(243, 207, 185, 0.2)', // 淺粉色（實木地板）
+                    borderColor: 'rgba(193, 159, 135, 1)', // 深粉色邊框
+                    borderWidth: 1,
+                    hoverBorderColor: 'rgba(193, 159, 135, 1)', // 滑鼠懸停時的邊框顏色
+                    hoverBackgroundColor: 'rgba(193, 159, 135, 0.3)', // 滑鼠懸停時的背景顏色
                 }, {
                     label: '復合木地板',
-                    data: [65, 75, 55, 65, 60], // 復合木地板在各指標的得分
-                    backgroundColor: 'rgba(255, 159, 64, 0.2)', // 填充顏色
-                    borderColor: 'rgba(255, 159, 64, 1)', // 邊框顏色
-                    borderWidth: 1
+                    data: [65, 70, 60, 60, 75], // 復合木地板在各指標的得分
+                    backgroundColor: 'rgba(179, 157, 174, 0.1)', // 淺灰紫色（復合木地板）
+                    borderColor: 'rgba(148, 134, 142, 1)', // 深灰紫色邊框
+                    borderWidth: 1,
+                    hoverBorderColor: 'rgba(148, 134, 142, 1)', // 滑鼠懸停時的邊框顏色
+                    hoverBackgroundColor: 'rgba(148, 134, 142, 0.3)', // 滑鼠懸停時的背景顏色
+                }, {
+                    label: '竹地板',
+                    data: [60, 65, 55, 70, 65], // 竹地板在各指標的得分
+                    backgroundColor: 'rgba(204, 194, 178, 0.1)', // 淺黃褐色（竹地板）
+                    borderColor: 'rgba(179, 170, 154, 1)', // 深黃褐色邊框
+                    borderWidth: 1,
+                    hoverBorderColor: 'rgba(179, 170, 154, 1)', // 滑鼠懸停時的邊框顏色
+                    hoverBackgroundColor: 'rgba(179, 170, 154, 0.3)', // 滑鼠懸停時的背景顏色
                 }]
             },
             options: {
@@ -969,7 +1013,12 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: '木地板環保特性比較'
+                        text: '',
+                        font: {
+                            size: 18,
+                            weight: 'bold'
+                        },
+                        color: '#333'
                     },
                     tooltip: {
                         callbacks: {
@@ -982,6 +1031,64 @@
                 }
             }
         });
+
+        // 創建圓餅圖
+        var ctx = document.getElementById('floorChart').getContext('2d');
+        var floorChart = new Chart(ctx, {
+            type: 'pie', // 使用圓餅圖
+            data: {
+                labels: ['超耐磨木地板', '實木地板', '復合木地板', '竹地板'], // 木地板種類
+                datasets: [{
+                    label: '',
+                    data: [42, 31, 16, 11], // 市場佔有率數據
+                    backgroundColor: [
+                        'rgba(217, 174, 171, 0.8)',  // 奶油色（超耐磨木地板）
+                        'rgba(243, 207, 185, 0.8)', // 淺粉色（實木地板）
+                        'rgba(179, 157, 174, 0.8)',  // 淺灰紫色（復合木地板）
+                        'rgba(204, 194, 178, 0.8)',  // 淺黃褐色（竹地板）
+                        // 'rgba(184, 178, 195, 0.8)'   // 淺薰衣草紫色（其他）
+                    ],
+                    borderColor: [
+                        'rgba(175, 132, 129, 1)',  // 深奶油色（超耐磨木地板）
+                        'rgba(193, 159, 135, 1)', // 深粉色（實木地板）
+                        'rgba(148, 134, 142, 1)',  // 深灰紫色（復合木地板）
+                        'rgba(179, 170, 154, 1)',  // 深黃褐色（竹地板）
+                        // 'rgba(158, 150, 161, 1)'   // 深薰衣草紫色（其他）
+                    ],
+                    borderWidth: 2, // 增加邊框寬度
+                    // 加入陰影效果
+                    hoverOffset: 4,
+                    shadowOffsetX: 3,
+                    shadowOffsetY: 3,
+                    shadowBlur: 5,
+                    shadowColor: 'rgba(0, 0, 0, 0.3)' // 陰影顏色
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: ''
+                    },
+                    tooltip: {
+                        callbacks: {
+                            // 自訂工具提示顯示方式
+                            label: function (tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            fontSize: 14
+                        }
+                    }
+                }
+            }
+        });
+
     </script>
 </body>
 

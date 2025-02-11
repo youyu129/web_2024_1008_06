@@ -13,14 +13,16 @@
 
 <body>
     <div class="container mt-3">
+        <h2>0050</h2>
+        <p>OHLC</p>
         <table class="table table-hover" id="myTable">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
+                    <th>Time</th>
+                    <th>Open</th>
+                    <th>Low</th>
+                    <th>High</th>
+                    <th>Close</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,7 +63,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script>
         $(document).ready(function () {
-            let url = `./api/data/stock/s0050.json`;
+            let url = `../s20250211/data/stock/s0050.json`;
             console.log('url', url);
 
             // 1. bind
@@ -79,15 +81,16 @@
                     $.each(res, function (key, value) {
                         // console.log('key', key);
                         // console.log('value', value);
+                        // console.log('time', value.time);
 
-                        let data = `<tr>
-                            <td>${value['Name']}</td>
-                            <td>${value['Position']}</td>
-                            <td>${value['Office']}</td>
-                            <td>${value['Age']}</td>
-                            <td>${value['Start date']}</td>
+                        let tmpText = `<tr>
+                            <td>${value.time}</td>
+                            <td>${value.open}</td>
+                            <td>${value.high}</td>
+                            <td>${value.low}</td>
+                            <td>${value.close}</td>
                         </tr>`;
-                        myTbody.append(data);
+                        myTbody.append(tmpText);
                     });
                 }
             });

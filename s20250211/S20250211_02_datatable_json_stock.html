@@ -76,9 +76,10 @@
                 url: url,
                 dataType: "Json",
                 success: function (res) {
+                    let data = res
                     console.log('res', res);
 
-                    $.each(res, function (key, value) {
+                    $.each(data, function (key, value) {
                         // console.log('key', key);
                         // console.log('value', value);
                         // console.log('time', value.time);

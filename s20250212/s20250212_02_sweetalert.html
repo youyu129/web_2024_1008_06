@@ -14,7 +14,16 @@
 </head>
 
 <body>
-
+    <div>
+        <button class="btn btn-primary m-5 " id="myBtn">
+            myBtn
+        </button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary m-5" id="mySweetBtn">
+            mySweetBtn
+        </button>
+    </div>
     <!-- js include 順序 1.bs 2.jq 3.self -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
         integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
@@ -43,14 +52,29 @@
     <!-- bootstrap icon -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script>
+
+
         $(document).ready(function () {
             // 1.bind
-
+            const myBtn = $("#myBtn")
+            const mySweetBtn = $("#mySweetBtn")
 
             // 2.action
-
+            myBtn.on("click", function () {
+                alert("origin alert")
+            })
+            mySweetBtn.on("click", function () {
+                // alert("sweet alert")
+                Swal.fire({
+                    title: "Drag me!",
+                    icon: "success",
+                    draggable: true
+                });
+            })
 
         });
+
+
     </script>
 
 

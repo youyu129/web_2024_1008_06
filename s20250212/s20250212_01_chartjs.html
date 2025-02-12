@@ -17,7 +17,7 @@
 <body>
     <!-- table -->
 
-    <div class="container mt-3">
+    <div class="container mt-3 w-75">
         <h2>Bordered Table</h2>
         <p>The .table-bordered class adds borders on all sides of the table and the cells:</p>
         <table class="table table-bordered" id="myTable">
@@ -49,12 +49,34 @@
 
     <hr>
 
-    <div class="container">
+    <div class="container w-75">
         <div class="row">
-            <div class="col-3 mx-auto">
+            <div class="col-6">
                 <div>
                     <canvas id="myChart1"></canvas>
                 </div>
+            </div>
+            <div class="col-6 d-flex align-items-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam animi iste sed iure optio aliquam
+                sapiente, id vitae at? Possimus dicta amet ratione maiores iusto nihil velit, facilis qui repellat
+                voluptas debitis aperiam quo provident sapiente laudantium, harum cupiditate ipsa eum, inventore
+                corrupti. Ipsum repudiandae, dolor doloremque ea debitis odio perferendis sunt a exercitationem nisi!
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div>
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+            <div class="col-6 d-flex align-items-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsam animi iste sed iure optio aliquam
+                sapiente, id vitae at? Possimus dicta amet ratione maiores iusto nihil velit, facilis qui repellat
+                voluptas debitis aperiam quo provident sapiente laudantium, harum cupiditate ipsa eum, inventore
+                corrupti. Ipsum repudiandae, dolor doloremque ea debitis odio perferendis sunt a exercitationem nisi!
             </div>
 
         </div>
@@ -82,6 +104,7 @@
             const myTable = $('#myTable');
             const myTbody = myTable.find('tbody');
             const ctx1 = document.getElementById('myChart1');
+            const ctx2 = document.getElementById('myChart2');
 
             // data
 
@@ -146,10 +169,32 @@
                     // console.log('sum', sum);
                     console.log('resArr', resArr);
 
-
                     // chart.js
                     // ctx1
                     new Chart(ctx1, {
+                        type: 'bar',
+                        data: {
+                            labels: ['rise0', 'rise1', 'rise2', 'lose0', 'lose1', 'lose2'],
+                            datasets: [{
+                                label: '# of Votes',
+                                data: [resArr['rise0'], resArr['rise1'], resArr['rise2'], resArr['lose0'], resArr['lose1'], resArr['lose2']],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                    // chart.js end
+
+
+                    // chart.js
+                    // ctx2
+                    new Chart(ctx2, {
                         type: 'doughnut',
                         data: {
                             labels: ['rise0', 'rise1', 'rise2', 'lose0', 'lose1', 'lose2'],

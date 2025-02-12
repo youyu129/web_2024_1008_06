@@ -25,7 +25,7 @@
 
 <body>
 
-    <div class="container mt-5 d-flex justify-content-evenly">
+    <div class="container mt-5 d-flex justify-content-around">
         <div class="row">
             <div class="col">
                 <button id="appendBtn" type="button" class="btn btn-primary btn-lg" type="button">append</button>
@@ -77,10 +77,20 @@
     <script>
         $(document).ready(function () {
             // 1.bind
-
+            const appendBtn = $("#appendBtn")
+            const prependBt = $("#prependBtn")
+            const afterBtn = $("#afterBtn")
+            const beforeBtn = $("#beforeBtn")
+            const box = $(".box")
+            let count = 0
 
             // 2.action
-
+            appendBtn.click(function (e) {
+                // console.log('appendBtn', appendBtn);
+                count++
+                let tmpText = `<p>第${count}次origin Lorem ipsum dolor sit amet.</p>`
+                box.append(tmpText)
+            })
 
         });
     </script>

@@ -93,12 +93,8 @@
                 console.log('tmpTr', tmpTr);
 
                 // 2. copy tr
+                tmpTr.clone().appendTo("Tbody");
             })
-
-
-            $("button").click(function () {
-                $("p").clone().appendTo("body");
-            });
         });
     </script>
 

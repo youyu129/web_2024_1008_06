@@ -32,9 +32,9 @@
                     <td>Doe</td>
                     <td>john@example.com</td>
                     <td>
-                        <a href="http://" id="editBtn">edit</a>
-                        <a href="http://" id="delBtn">del</a>
-                        <a href="http://" id="copyBtn">copy</a>
+                        <button type="button" class="btn btn-warning" id="editBtn">edit</button>
+                        <button type="button" class="btn btn-danger" id="delBtn">del</button>
+                        <button type="button" class="btn btn-primary" id="copyBtn">copy</button>
                     </td>
                 </tr>
             </tbody>
@@ -70,6 +70,28 @@
 
     <script>
         $(document).ready(function () {
+            // 1. bind
+            const editBtn = $('#editBtn')
+            const delBtn = $('#delBtn')
+            const copyBtn = $('#copyBtn')
+            // 2. action
+
+            editBtn.click(function (e) {
+                console.log('editBtn ok');
+
+            })
+
+            delBtn.click(function (e) {
+                console.log('delBtn ok');
+
+            })
+
+            copyBtn.click(function (e) {
+                console.log('copyBtn ok');
+
+            })
+
+
             $("button").click(function () {
                 $("p").clone().appendTo("body");
             });

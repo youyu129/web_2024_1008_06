@@ -41,9 +41,13 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
+                <!-- before -->
                 <div class="box">
+                    <!-- prepend -->
                     <p>origin Lorem ipsum dolor sit amet.</p>
+                    <!-- append -->
                 </div>
+                <!-- after -->
             </div>
         </div>
     </div>
@@ -78,7 +82,7 @@
         $(document).ready(function () {
             // 1.bind
             const appendBtn = $("#appendBtn")
-            const prependBt = $("#prependBtn")
+            const prependBtn = $("#prependBtn")
             const afterBtn = $("#afterBtn")
             const beforeBtn = $("#beforeBtn")
             const box = $(".box")
@@ -90,6 +94,30 @@
                 count++
                 let tmpText = `<p>第${count}次origin Lorem ipsum dolor sit amet.</p>`
                 box.append(tmpText)
+            })
+
+            prependBtn.click(function (e) {
+                // console.log('prependBtn', prependBtn);
+
+                count++
+                let tmpText = `<p>第${count}次origin Lorem ipsum dolor sit amet.</p>`
+                box.prepend(tmpText)
+            })
+
+            afterBtn.click(function (e) {
+                // console.log('afterBtn', afterBtn);
+
+                count++
+                let tmpText = `<p>第${count}次origin Lorem ipsum dolor sit amet.</p>`
+                box.after(tmpText)
+            })
+
+            beforeBtn.click(function (e) {
+                // console.log('beforeBtn', beforeBtn);
+
+                count++
+                let tmpText = `<p>第${count}次origin Lorem ipsum dolor sit amet.</p>`
+                box.before(tmpText)
             })
 
         });
